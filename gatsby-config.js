@@ -10,5 +10,12 @@ module.exports = {
   	title: 'Emilio Personal Site',
   	description: 'Building my own site!'
   },
-  plugins: [],
+  plugins: [
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
 }
