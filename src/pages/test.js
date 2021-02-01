@@ -1,19 +1,20 @@
 import React, { useState } from "react"
-
+import styled from "styled-components"
 import Layout from "../components/layout"
+import MenuHeader from "../components/menuHeader"
 
-const greenBook = <span role="img" aria-label="emoji">📗</span>
+const greenBook = <span role="img" aria-label="emoji"></span>
 const redBook = <span role="img" aria-label="emoji">📕</span>
 
-// const TestPage = () => {
-//   return (
-//     <Layout>
-//         {greenBook} {redBook}
-//     </Layout>
-//   )
-// }
+const TestPage = () => {
+  return (
+    <Layout>
+        <MenuHeader/>
+    </Layout>
+  )
+}
 
-// export default TestPage
+export default TestPage
 
 // function App() {
 //     const [isShown, setIsShown] = useState(false);

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import image from '../images/heroPicture.png'
 import { Link } from "gatsby"
+import MenuHeader from "./menuHeader"
 
 const StyledSection = styled.section`
   .title {
@@ -22,21 +23,26 @@ const StyledSection = styled.section`
   .highlighted3 {
     box-shadow: inset 0 -2.5rem 0 #cdf3e1;
   }
+  .hero-image {
+    float: left; 
+    padding: 50px;
+  }
+  .description {
+
+  }
 `
 
 const Hero = () => {
   return (
     <StyledSection id="hero">
-      <div style={{float: `left`, padding: '50px'}}>
+      <div className="hero-image">
       <img src={image} />
       </div>
     <h1 className="title">
       Hello <span role="img" aria-label="emoji">👋</span><br />
       I'm <Link to='/' >Emilio Ziniades</Link>
     </h1>
-    <h2 className="subtitle">
-      I <span className="highlighted1">teach</span>, <span className="highlighted2">write</span> and <span className="highlighted">code</span>.
-    </h2>
+    <MenuHeader />
     <div className="description">
       Interdisciplinary research into Political Economy, Cryptocurrencies, and Tech. Based in Cape Town.
     </div>
@@ -45,5 +51,3 @@ const Hero = () => {
 };
 
 export default Hero
-
-
