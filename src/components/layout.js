@@ -1,25 +1,34 @@
 import React from "react"
-import { Link } from "gatsby"
+import styled from "styled-components"
 
-const ListLink = props => (
-  <li style={{ display: `inline-block`, marginRight: `1rem`, textDecoration: `none` }}>
-    <Link to={props.to} >{props.children}</Link>
-  </li>
-)
+import GlobalStyle from "./globalStyle"
+import Header from "./header"
+import Footer from "./footer"
 
-export default function Layout({ children }) {
+const StyledLayout = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  #main-content {
+    width: 100%;
+    max-width: 62.5rem;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+`
+
+const Layout = ({ children }) => {
   return (
-    <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
-      <header style={{ marginBottom: `1.5rem` }}>
-        <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-          <h1 style={{ display: `inline` }}>Emilio Ziniades</h1>
-        </Link>
-        <ul style={{ listStyle: `none`, float: `right` }}>
-          <ListLink to="/tutors/">Tutors</ListLink>
-          <ListLink to="/writes/">Writes</ListLink>
-        </ul>
-      </header>
-      {children}
-    </div>
+    <StyledLayout>
+      <GlobalStyle />
+      <Header />
+      <main id="main-content">{children}</main>
+      <Footer />
+    </StyledLayout>
   )
 }
+
+export default Layout
