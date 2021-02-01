@@ -103,6 +103,7 @@ function HoverEmoji (props){
   
   }
 
+  
 const MenuHeader = () => {
     return(
         <StyledHeader>
@@ -110,8 +111,8 @@ const MenuHeader = () => {
         <div className="menu-header">
           I
         </div>
-        <HoverEmoji text='teach,' emoji='📚' to='/tutors' class='highlighted1'/>
-        <HoverEmoji text='write' emoji='📝' to='/writes' class='highlighted2'/>
+        <HoverEmoji text='teach,' emoji='📚' to='/teach' class='highlighted1'/>
+        <HoverEmoji text='write' emoji='📝' to='/write' class='highlighted2'/>
         <div className="menu-header" >
           and
         </div>

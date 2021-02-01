@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Helmet } from 'react-helmet'
 import styled from "styled-components"
 
 const StyledHeader = styled.header`
@@ -23,6 +24,11 @@ const StyledLogo = styled.div`
 const Header = () => {
   return (
     <StyledHeader>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Emilio Ziniades</title>
+          <link rel="canonical" href="https://emilio.co.za/" />
+        </Helmet>
       <Link to="/" aria-label="home">
         <StyledLogo>ez.</StyledLogo>
       </Link>
