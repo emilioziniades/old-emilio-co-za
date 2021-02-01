@@ -38,7 +38,7 @@ const Hero = () => {
       I <span className="highlighted1">teach</span>, <span className="highlighted2">write</span> and <span className="highlighted">code</span>.
     </h2>
     <div className="description">
-      Interdisciplinary research into Political Economy, Crytpocurrencies, and Tech. Based in Cape Town.
+      Interdisciplinary research into Political Economy, Cryptocurrencies, and Tech. Based in Cape Town.
     </div>
   </StyledSection>
   )

@@ -7,14 +7,13 @@ const GlobalStyle = createGlobalStyle`
     html {
         width: 100%;
         height: 100%;
-        background-color: #
     }
     body {
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
-        background-color: white;
+        background-color: #F0EAD6;
         color: black;
         font-size: 1.125rem;
         font-family: "Roboto", Arial, Helvetica, sans-serif;
