@@ -1,9 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import Spacer from "react-spacer"
-
-
 
 import MenuHeader from "./menuHeader"
 import image from '../images/heroPicture.png'

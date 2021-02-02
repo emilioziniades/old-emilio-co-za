@@ -39,9 +39,9 @@ const StyledHeader = styled.section`
     )
   }
 
-function emojiBuilder (emoji) {
-    return <span role="img" aria-label="emoji">{emoji}</span>;
-};
+// function emojiBuilder (emoji) {
+//     return <span role="img" aria-label="emoji">{emoji}</span>;
+// };
 
 function HoverEmoji (props){
     const [hoverRef, isHovered] = useHover();

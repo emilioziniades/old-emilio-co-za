@@ -7,7 +7,8 @@ const TeachHeaderStyle = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
-  grid-row-gap: 0px; 
+  grid-row-gap: 0px;
+  background-color: none;
 }  
 .curve {
   grid-area: 1 / 1 / 2 / 2;
@@ -15,15 +16,14 @@ const TeachHeaderStyle = styled.div`
   }
 .tag-line {
   grid-area: 1 / 1 / 2 / 2;
-  margin-top: 50px;
+  margin-top: 47px;
   text-align: center;
   color: #F0EAD6;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 .content {
-  background-color: white;
-  margin-top: -4px;
+    margin-top: -4px;
 }
 `
 
