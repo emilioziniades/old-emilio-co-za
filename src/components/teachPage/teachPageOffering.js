@@ -2,50 +2,49 @@ import React from "react"
 import styled from "styled-components"
 
 const TeachOfferingStyle = styled.div`
-.parent {
+{
   background-color: white;
-  margin-top: -25px; 
+
+}
+.parent {
+  padding: 0 0 10px 0;
+  margin: -25px 0 0 25%;
+
+  }
+.lists {
+  list-style-type: none;
+}
+.subject-heading {
   
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px; 
-  }
-  .lists {
-    list-style-type: none;
-  }
-  .subject-heading {
-    
-  }
-  .hs-header {
-    list-style-type: '🏫 ';
-    list-style-position: inside;
-    font-weight: bold;
-    padding: 2ch;
-  }
-  .uni-header {
-    list-style-type: '🎓 ';
-    list-style-position: inside;    
-    font-weight: bold;
-    padding: 2ch;
-  }
-  .hs-list {
-    list-style-type: '📘 ';
-    list-style-position: inside;
-  }
-  .uni-list {
-    list-style-type: '📗 ';
-    list-style-position: inside;
-  }
-  .div1 {
-    text-align: left;
-    grid-area: 1 / 2 / 2 / 3;
-  }
-  .div2 {
-    text-align: left;
-    grid-area: 1 / 2 / 2 / 3;
-  }
+}
+.hs-header {
+  list-style-type: '🏫 ';
+  list-style-position: inside;
+  font-weight: bold;
+  padding: 2ch;
+}
+.uni-header {
+  list-style-type: '🎓 ';
+  list-style-position: inside;    
+  font-weight: bold;
+  padding: 2ch;
+}
+.hs-list {
+  list-style-type: '📘 ';
+  list-style-position: inside;
+}
+.uni-list {
+  list-style-type: '📗 ';
+  list-style-position: inside;
+}
+.div1 {
+  text-align: left;
+  grid-area: 1 / 2 / 2 / 3;
+}
+.div2 {
+  text-align: left;
+  grid-area: 1 / 2 / 2 / 3;
+}
 `
 
 const Offering = () => {

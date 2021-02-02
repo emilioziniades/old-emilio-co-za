@@ -6,7 +6,7 @@ import HeroShort from "../heroShort"
 import TeachHeader from "./teachPageHeader"
 import Blurb from "./teachPageBlurb"
 import Offering from "./teachPageOffering"
-import Form from "./teachPageForm"
+import ContactForm from './ContactForm'
 
 
 const TeachPage = () => {
@@ -17,7 +17,7 @@ const TeachPage = () => {
         <TeachHeader />
         <Blurb />
         <Offering />
-        <Form />
+        <ContactForm />
         </div>
       </Layout>
     )
