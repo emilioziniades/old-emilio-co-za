@@ -39,9 +39,9 @@ const StyledHeader = styled.section`
     )
   }
 
-// function emojiBuilder (props) {
-//     return <span role="img" aria-label="emoji">{props.emoji}</span>;
-// };
+function emojiBuilder (props) {
+    return <span role="img" aria-label="emoji">{props.emoji}</span>;
+};
 
 function HoverEmoji (props){
     const [hoverRef, isHovered] = useHover();
@@ -107,12 +107,12 @@ const MenuHeader = () => {
         <div className="menu-header">
           I
         </div>
-        <HoverEmoji text='teach,' emoji='📚' to='/teach' class='highlighted1'/>
-        <HoverEmoji text='write' emoji='📝' to='/write' class='highlighted2'/>
+        <HoverEmoji text='teach,' emoji={emojiBuilder('📚')} to='/teach' class='highlighted1'/>
+        <HoverEmoji text='write' emoji={emojiBuilder('📝')} to='/write' class='highlighted2'/>
         <div className="menu-header" >
           and
         </div>
-        <HoverEmoji text='code' emoji='💻' to='/code' class='highlighted' />
+        <HoverEmoji text='code'emoji={emojiBuilder('💻')} to='/code' class='highlighted' />
         <br />
         </h2>
         </StyledHeader> 

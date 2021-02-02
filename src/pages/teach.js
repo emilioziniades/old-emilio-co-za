@@ -4,6 +4,7 @@ import Spacer from "react-spacer"
 
 import Layout from "../components/layout"
 import HeroShort from "../components/heroShort"
+import emojiBuilder from "../components/menuHeader"
 
 
 const TeachStyle = styled.div`
@@ -77,16 +78,9 @@ const Blurb = () => {
 
 const OfferingStyle = styled.div`
 .parent {
-  display: grid;
-  grid-template-columns: 1fr repeat(2, 3fr) 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 15px;
-  grid-row-gap: 0px; 
   background-color: white;
   margin-top: -25px;
   }
-  .div1 { grid-area: 1 / 2 / 2 / 3; }
-  .div2 { grid-area: 1 / 3 / 2 / 4; } 
   .lists {
     list-style-type: none;
   }
@@ -94,20 +88,26 @@ const OfferingStyle = styled.div`
     
   }
   .hs-header {
-    list-style-type: '🏫 ';
+    list-style-type: ${emojiBuilder('🏫')};
     font-weight: bold;
     padding: 1ch;
   }
   .uni-header {
-    list-style-type: '🎓 ';
+    list-style-type: ${emojiBuilder('🎓')};
     font-weight: bold;
     padding: 1ch;
   }
   .hs-list {
-    list-style-type: '📘 ';
+    list-style-type: ${emojiBuilder('📘')};
   }
   .uni-list {
-    list-style-type: '📗 ';
+    list-style-type: ${emojiBuilder('📗')};
+  }
+  .div1 {
+    text-align: center;
+  }
+  .div2 {
+    text-align: center;
   }
 `
 
