@@ -3,12 +3,12 @@ import React from "react"
 import Layout from "../components/layout"
 import HeroShort from "../components/heroShort"
 
-const WritePage = () => {
+const TeachPage = () => {
   return (
     <Layout>
-      <HeroShort text='write' class='highlighted2'/>
+      <HeroShort text='code' class='highlighted'/>
     </Layout>
   )
 }
 
-export default WritePage
+export default TeachPage

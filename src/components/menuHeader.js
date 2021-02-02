@@ -1,7 +1,6 @@
 // A component which takes in 'text' and 'emoji', and returns a word that, when hovered on, becomes an emoji
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import image from '../images/heroPicture.png'
 import { Link } from "gatsby"
 
 const StyledHeader = styled.section`
@@ -40,9 +39,9 @@ const StyledHeader = styled.section`
     )
   }
 
-function emojiBuilder (props) {
-    return <span role="img" aria-label="emoji">{props.emoji}</span>;
-};
+// function emojiBuilder (props) {
+//     return <span role="img" aria-label="emoji">{props.emoji}</span>;
+// };
 
 function HoverEmoji (props){
     const [hoverRef, isHovered] = useHover();
@@ -92,9 +91,6 @@ function HoverEmoji (props){
         }
   
       },
-  
-      [ref.current] // Recall only if ref changes
-  
     );
   
   

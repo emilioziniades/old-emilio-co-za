@@ -1,10 +1,14 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import image from '../images/heroPicture.png'
+import React from "react"
 import { Link } from "gatsby"
-import MenuHeader from "./menuHeader"
+import styled from "styled-components"
+import Spacer from "react-spacer"
 
-const StyledSection = styled.section`
+
+
+import MenuHeader from "./menuHeader"
+import image from '../images/heroPicture.png'
+
+const StyledSection = styled.div`
   .title {
     margin-bottom: 0;
   }
@@ -24,10 +28,12 @@ const StyledSection = styled.section`
     box-shadow: inset 0 -2.5rem 0 #cdf3e1;
   }
   .hero-image {
-    float: left; 
-    padding: 50px;
+    padding: 10px;
   }
   .description {
+
+  }
+  .container {
 
   }
 `
@@ -36,8 +42,11 @@ const Hero = () => {
   return (
     <StyledSection id="hero">
       <div className="hero-image">
-      <img src={image} />
+        <Link to="/">
+        <img src={image} alt="Emilio Ziniades"/>
+        </Link>
       </div>
+    <div>
     <h1 className="title">
       Hello <span role="img" aria-label="emoji">👋</span><br />
       I'm <Link to='/' >Emilio Ziniades</Link>
@@ -46,7 +55,10 @@ const Hero = () => {
     <div className="description">
       Interdisciplinary research into Political Economy, Cryptocurrencies, and Tech. Based in Cape Town.
     </div>
-  </StyledSection>
+    </div>
+
+    <Spacer/>
+    </StyledSection>
   )
 };
 
