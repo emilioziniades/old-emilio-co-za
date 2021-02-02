@@ -15,20 +15,9 @@ const StyledSection = styled.div`
   .subtitle {
     margin-top: 0;
   }
-  .highlighted {
-    box-shadow: inset 0 -2.5rem 0 #cdf3e1;
-  }
-  .highlighted1 {
-    box-shadow: inset 0 -2.5rem 0 #E69EAB;
-  }
-  .highlighted2 {
-    box-shadow: inset 0 -2.5rem 0 #BECFEE;
-  }
-  .highlighted3 {
-    box-shadow: inset 0 -2.5rem 0 #cdf3e1;
-  }
   .hero-image {
-    padding: 10px;
+    display: block;
+    text-align: right;
   }
   .description {
 
@@ -36,30 +25,44 @@ const StyledSection = styled.div`
   .container {
 
   }
-`
+  .parent {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+    } 
+    .div1 { 
+      grid-area: 1 / 1 / 2 / 2;
+      text-align: center;
+    }
+.div2 { grid-area: 1 / 2 / 2 / 3; } 
 
+`
 const Hero = () => {
-  return (
-    <StyledSection id="hero">
-      <div className="hero-image">
+  return(
+    <StyledSection>
+    <div class="parent">
+      <div class="div1"> 
         <Link to="/">
-        <img src={image} alt="Emilio Ziniades"/>
+          <img src={image} alt="Emilio Ziniades" class='hero-image'/>
         </Link>
       </div>
-    <div>
-    <h1 className="title">
-      Hello <span role="img" aria-label="emoji">👋</span><br />
-      I'm <Link to='/' >Emilio Ziniades</Link>
-    </h1>
-    <MenuHeader />
-    <div className="description">
-      Interdisciplinary research into Political Economy, Cryptocurrencies, and Tech. Based in Cape Town.
-    </div>
-    </div>
-
-    <Spacer/>
-    </StyledSection>
+      <div class="div2"> 
+        <h1 className="title">
+          Hello <span role="img" aria-label="emoji">👋</span><br />
+          I'm <Link to='/' >Emilio Ziniades</Link>
+        </h1>
+        <MenuHeader />
+        <div className="description">
+          <br />
+          Interdisciplinary research into Political Economy, Cryptocurrencies, and Tech. Based in Cape Town.
+        </div>
+      </div>
+    </div> 
+  </StyledSection>
   )
-};
+
+}
 
 export default Hero

@@ -4,7 +4,6 @@ import Spacer from "react-spacer";
 
 import Layout from "../components/layout";
 import HeroShort from "../components/heroShort";
-import redWave from "../images/redWave.svg";
 
 
 const TeachStyle = styled.div`
@@ -45,14 +44,6 @@ const TeachStyle = styled.div`
         z-index: -1; }  
 `
 
-const Curve =(props) =>{
-  return(
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className={props.className}>
-    <path fill="#990D35" fill-opacity="0.6" d="M0,128L120,112C240,96,480,64,720,53.3C960,43,1200,53,1320,58.7L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
-    </path>
-  </svg>
-  )
-};
 
 const TeachHeader = () => {
   return(
