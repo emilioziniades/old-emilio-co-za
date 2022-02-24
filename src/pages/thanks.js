@@ -1,9 +1,12 @@
 import React from 'react'
-import Layout from '../../components/Layout'
 
-const ThankYou = () => {
+import HeroShort from "../components/heroShort"
+import Layout from '../components/Layout'
+
+export default function() {
     return (
   <Layout>
+    <HeroShort text='teach' class='highlighted1'/>
     <section className="section">
       <div className="container">
         <div className="content">
@@ -15,4 +18,3 @@ const ThankYou = () => {
     )
 }
 
-export default ThankYou
