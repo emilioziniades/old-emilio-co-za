@@ -1,0 +1,24 @@
+# tailored tutoring for high school and university students
+
+Since 2016, I have managed my own tutoring business. I have also tutored and marked essays for the Philosophy and Economics departments at the University of Cape Town.
+
+I hold a BSocSci in Philosophy, Politics and Economics (with distinction) and a BCom Hons in Economics from the University of Cape Town. I matriculated with nine distinctions from St John’s College, Johannesburg.
+
+Online or in-person, I can support you with your immediate study needs, and share with you my personal study and organizational techniques which have help me achieve excellence throughout school and university.
+
+I am offering assistance with tests, assignments and exams in the following subjects:
+
+## 🏫 High school
+
+- 📘 **Mathematics**
+- 📘 **English**
+- 📘 **History**
+- 📘 **Science**
+- 📘 **AP Mathematics and English**
+
+## 🎓 Undergraduate University
+
+- 📗 **Economics**
+- 📗 **Philosophy**
+- 📗 **Politics**
+- 📗 **Mathematics**
