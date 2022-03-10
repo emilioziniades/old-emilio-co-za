@@ -6,7 +6,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 
 export default function Teach({ data }) {
-  console.log(data)
   const teachPage = data.allMdx.nodes[0].body
   return (
     <Layout>

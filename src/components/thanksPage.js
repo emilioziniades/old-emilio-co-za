@@ -3,12 +3,15 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
+//
+// const ThanksBox = styled.div`
+//    {
+//     text-align: center;
+//   }
+// `
 
-const ThanksBox = styled.div`
-   {
-    text-align: center;
-  }
-`
+const ThanksBox = styled.div``
+
 const ThanksPage = () => {
   return (
     <Layout>
