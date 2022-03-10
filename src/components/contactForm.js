@@ -15,7 +15,7 @@ const FormStyle = styled.div``
 const ContactForm = () => {
   return (
     <FormStyle>
-      <h2 class="title">Interested? Get in touch! </h2>
+      <h2 className="title">Get in touch!</h2>
       <Spacer height="15px" />
       <form
         name="Contact"

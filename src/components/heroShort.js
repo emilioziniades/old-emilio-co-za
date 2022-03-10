@@ -46,13 +46,13 @@ const StyledSection = styled.div``
 const HeroShort = props => {
   return (
     <StyledSection>
-      <div class="parent">
-        <div class="div1">
+      <div className="parent">
+        <div className="div1">
           <Link to="/">
-            <img src={image} alt="Emilio Ziniades" class="hero-image" />
+            <img src={image} alt="Emilio Ziniades" className="hero-image" />
           </Link>
         </div>
-        <div class="div2">
+        <div className="div2">
           <h1 className="title">
             Hello{" "}
             <span role="img" aria-label="emoji">
