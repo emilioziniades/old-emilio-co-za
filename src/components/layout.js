@@ -22,12 +22,16 @@ import Footer from "./footer"
 
 const StyledLayout = styled.div``
 
-const Layout = ({ children }) => {
+const Layout = ({ pageTitle, children }) => {
   return (
     <StyledLayout>
       <GlobalStyle />
+      <title>{pageTitle}</title>
       <Header />
-      <main id="main-content">{children}</main>
+      <main id="main-content">
+        <h1>{pageTitle}</h1>
+        {children}
+      </main>
       <Footer />
     </StyledLayout>
   )

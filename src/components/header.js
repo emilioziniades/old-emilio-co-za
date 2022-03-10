@@ -22,6 +22,9 @@ const StyledHeader = styled.header``
 //   font-weight: 900;
 //   color: black;
 // `
+//
+
+const StyledNav = styled.nav``
 
 const StyledLogo = styled.div``
 
@@ -36,6 +39,30 @@ const Header = () => {
       <Link to="/" aria-label="home">
         <StyledLogo>ez.</StyledLogo>
       </Link>
+      <StyledNav>
+        <ul>
+          <li>
+            <Link to="/teach" aria-label="teach-page">
+              Teach
+            </Link>
+          </li>
+          <li>
+            <Link to="/write" aria-label="write-page">
+              Write
+            </Link>
+          </li>
+          <li>
+            <Link to="/code" aria-label="code-page">
+              Code
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" aria-label="contact-page">
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </StyledNav>
     </StyledHeader>
   )
 }
