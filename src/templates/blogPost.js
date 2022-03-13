@@ -1,40 +1,44 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+
 import Layout from "../components/layout"
+import { StyledContainer } from "../components/styles"
 
 const BlogPost = ({ data }) => {
   const { previous, next } = data
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p>{data.mdx.frontmatter.date}</p>
-      <article>
-        <MDXRenderer>{data.mdx.body}</MDXRenderer>
-      </article>
-      <nav>
-        <ul>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                <span role="img" aria-label="emoji">
-                  ⬅️
-                </span>
-                {" " + previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title + " "}
-                <span role="img" aria-label="emoji">
-                  ➡️
-                </span>
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      <StyledContainer>
+        <p>{data.mdx.frontmatter.date}</p>
+        <article>
+          <MDXRenderer>{data.mdx.body}</MDXRenderer>
+        </article>
+        <nav>
+          <ul>
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  <span role="img" aria-label="emoji">
+                    ⬅️
+                  </span>
+                  {" " + previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title + " "}
+                  <span role="img" aria-label="emoji">
+                    ➡️
+                  </span>
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </StyledContainer>
     </Layout>
   )
 }

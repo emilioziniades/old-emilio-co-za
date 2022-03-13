@@ -1,28 +1,18 @@
 import React from "react"
-import styled from "styled-components"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-//
-// const ThanksBox = styled.div`
-//    {
-//     text-align: center;
-//   }
-// `
-
-const ThanksBox = styled.div``
+import { StyledContainer } from "../components/styles"
 
 const ThanksPage = () => {
   return (
     <Layout>
-      <ThanksBox>
+      <StyledContainer center>
         <h2>Thank you! I will be in touch shortly. </h2>
         <Link to="/" aria-label="home">
-          <p>
-            <u>go back</u>
-          </p>
+          go back
         </Link>
-      </ThanksBox>
+      </StyledContainer>
     </Layout>
   )
 }

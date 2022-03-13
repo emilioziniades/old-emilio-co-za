@@ -1,17 +1,13 @@
 import React from "react"
+// import "bootstrap/dist/css/bootstrap.min.css"
 
 import Layout from "../components/layout"
 import Hero from "../components/hero"
 
-
-
-
-const IndexPage = () => {
+export default function IndexPage() {
   return (
     <Layout>
       <Hero />
     </Layout>
   )
 }
-
-export default IndexPage

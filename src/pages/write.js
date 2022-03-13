@@ -1,28 +1,29 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import Layout from "../../components/layout"
+import Layout from "../components/layout"
+import BlogBio from "../components/blogIntro"
+import { StyledContainer } from "../components/styles"
 
-const WritePage = ({ data }) => {
+export default function WritePage({ data }) {
   const { posts } = data.blog
   return (
     <Layout>
+      <BlogBio />
       {posts.map(post => (
-        <article key={post.id}>
+        <StyledContainer key={post.id}>
           <h2>
             <Link to={`/write/${post.slug}`}>{post.frontmatter.title}</Link>
           </h2>
           <small>{post.frontmatter.date}</small>
           <p> {post.frontmatter.description} </p>
-        </article>
+        </StyledContainer>
       ))}
     </Layout>
   )
 }
 
-export default WritePage
-
-export const pageQuery = graphql`
+export const query = graphql`
   {
     blog: allMdx(
       sort: { fields: frontmatter___date, order: DESC }

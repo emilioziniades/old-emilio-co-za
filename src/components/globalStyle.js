@@ -1,5 +1,17 @@
 import { createGlobalStyle } from "styled-components"
 
+export const colours = {
+  red: "#e69eab",
+  blue: "#becfee",
+  green: "#adebce",
+  text: "black",
+  textAlt: "white",
+  foreground: "white",
+  background: "#f0ead6",
+  backgroundAlt: "black",
+  link: "#3772ff",
+  linkHover: "#5E4B56",
+}
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
@@ -14,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         margin: 0;
         padding: 0;
-        background-color: #F0EAD6;
+        background-color: ${colours.background};
         color: black;
         font-size: 1.125rem;
         font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -43,13 +55,14 @@ const GlobalStyle = createGlobalStyle`
     }
     a {
         display: inline-block;
-        text-decoration: none;
+        text-decoration: underline;
         text-decoration-skip-ink: auto;
-        color: inherit;
+        color: ${colours.link};
         cursor: pointer;
         &:hover,
         &:focus {
           outline: 0;
+          color: ${colours.linkHover};
         }
     }
 `
