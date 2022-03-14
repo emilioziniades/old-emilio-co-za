@@ -1,6 +1,6 @@
 import React from "react"
 
-import { StyledBlogBio, StyledContainer, Row, Column } from "./styles"
+import { StyledBlogBio, Row, Column } from "./styles"
 import milkyWay from "../images/milky-way.png"
 
 const BlogBio = () => {
@@ -8,7 +8,7 @@ const BlogBio = () => {
     <StyledBlogBio>
       <Row>
         <Column grow="2">
-          <img src={milkyWay} height="100" width="100" />
+          <img src={milkyWay} aria-label="milky-way" height="100" width="100" />
         </Column>
         <Column grow="8">
           <h1>Downwell</h1>

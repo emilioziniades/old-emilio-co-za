@@ -24,7 +24,7 @@ const Hero = () => {
           <h1 className="title">
             Hello{" "}
             <span role="img" aria-label="emoji">
-              👋
+              👋🏼
             </span>
             <br />
             I'm <Link to="/">Emilio Ziniades</Link>
