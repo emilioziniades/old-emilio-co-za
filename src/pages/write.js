@@ -13,7 +13,7 @@ export default function WritePage({ data }) {
       {posts.map(post => (
         <StyledContainer key={post.id}>
           <h2>
-            <Link to={`/write/${post.slug}`}>{post.frontmatter.title}</Link>
+            <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
           </h2>
           <small>{post.frontmatter.date}</small>
           <p> {post.frontmatter.description} </p>
@@ -31,13 +31,15 @@ export const query = graphql`
     ) {
       posts: nodes {
         id
-        slug
         frontmatter {
           date(fromNow: true)
           description
           page
           title
           type
+        }
+        fields {
+          slug
         }
       }
     }
