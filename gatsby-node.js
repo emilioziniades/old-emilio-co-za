@@ -12,7 +12,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: "slug",
-      value: `/write${relativeFilePath}`,
+      value: `${relativeFilePath}`,
     })
   }
 }

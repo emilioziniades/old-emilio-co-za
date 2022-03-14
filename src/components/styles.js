@@ -34,6 +34,15 @@ export const StyledContainer = styled.div`
   a {
     text-decoration: none;
   }
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  td {
+    text-align: center;
+  }
 `
 
 export const StyledHeader = styled.header`
