@@ -1,54 +1,50 @@
 import React from "react"
-import Spacer from "react-spacer"
 
 import { StyledForm } from "./styles"
 
+import Row from "react-bootstrap/Row"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+
 const ContactForm = () => {
   return (
-    <StyledForm>
-      <div className="container">
+    <Row className="justify-content-center">
+      <StyledForm
+        name="Contact"
+        method="POST"
+        netlify-honeypot="bot-field"
+        data-netlify="true"
+        action="/thanks"
+      >
         <h2 className="title">Get in touch!</h2>
         <p>
           Have any questions, want to work together, or just for a chat. Fill
           out the form below and I'll be in touch.{" "}
         </p>
-        <Spacer height="15px" />
-        <form
-          name="Contact"
-          method="POST"
-          netlify-honeypot="bot-field"
-          data-netlify="true"
-          action="/thanks"
-        >
-          <input type="hidden" name="bot-field" />
-          <input type="hidden" name="form-name" value="Contact" />
+        <Form.Control type="hidden" name="bot-field" />
+        <Form.Control type="hidden" name="form-name" value="Contact" />
 
-          <p>
-            <label>
-              Your Name:
-              <input type="text" name="name" />
-            </label>
-          </p>
-          <p>
-            <label>
-              Your Email:
-              <input type="email" name="email" />
-            </label>
-          </p>
-          <p>
-            <label>
-              Message:
-              <textarea name="message" />
-            </label>
-          </p>
-          <p>
-            <button id="submit" type="submit">
-              Submit
-            </button>
-          </p>
-        </form>
-      </div>
-    </StyledForm>
+        <Form.Group className="mb-3">
+          <Form.Label> Your name: </Form.Label>
+          <Form.Control type="text" name="name " placeholder="Enter name" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label> Your email: </Form.Label>
+          <Form.Control type="email" name="email" placeholder="Enter email" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label> Message: </Form.Label>
+          <Form.Control
+            as="textarea"
+            name="message"
+            placeholder="Enter message"
+          />
+        </Form.Group>
+        <Button type="submit" className="mb-3">
+          Submit
+        </Button>
+      </StyledForm>
+    </Row>
   )
 }
 

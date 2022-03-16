@@ -4,6 +4,8 @@ export const colours = {
   red: "#e69eab",
   blue: "#becfee",
   green: "#adebce",
+  yellow: "#ffdb70",
+  orange: "#feb95f",
   text: "black",
   textAlt: "white",
   foreground: "white",
@@ -12,10 +14,11 @@ export const colours = {
   link: "#3772ff",
   linkHover: "#5E4B56",
 }
+
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
-        // border: 1px solid coral;
+        // border: 1px solid green;
     }
     html {
         width: 100%;
@@ -38,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 2rem;
         line-height: 2.375rem;
         color: black;
+        margin: 2rem 0rem;
         @media (min-width: 1200px) {
             font-size: 2.625rem;
             line-height: 4rem;

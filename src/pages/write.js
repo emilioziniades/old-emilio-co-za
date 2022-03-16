@@ -2,22 +2,21 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
-import BlogBio from "../components/blogIntro"
-import { StyledContainer } from "../components/styles"
+import { StyledArticle } from "../components/styles"
+import Card from "react-bootstrap/Card"
 
 export default function WritePage({ data }) {
   const { posts } = data.blog
   return (
-    <Layout>
-      <BlogBio />
+    <Layout pageTitle="📝 Write">
       {posts.map(post => (
-        <StyledContainer key={post.id}>
-          <h2>
+        <StyledArticle key={post.id}>
+          <Card.Title as="h2">
             <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-          </h2>
+          </Card.Title>
           <small>{post.frontmatter.date}</small>
           <p> {post.frontmatter.description} </p>
-        </StyledContainer>
+        </StyledArticle>
       ))}
     </Layout>
   )

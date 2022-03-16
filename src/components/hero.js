@@ -1,44 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 import HeroMenu from "./heroMenu"
 import { StyledHero } from "./styles"
-import image from "../images/heroPicture.png"
+import image from "../images/drawing.jpg"
 
 const Hero = () => {
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      site {
+        siteMetadata {
+          author
+          blurb
+        }
+      }
+    }
+  `)
+  console.log(data)
   return (
     <StyledHero>
-      <div className="parent">
-        <div className="div1">
-          <Link to="/">
-            <img
-              src={image}
-              alt="Emilio Ziniades"
-              className="hero-image"
-              width="180rem"
-              height="auto"
-            />
-          </Link>
-        </div>
-        <div className="div2">
+      <Row>
+        <Col
+          md="4"
+          className="d-flex justify-content-md-center align-items-md-center"
+        >
+          <img src={image} alt="Emilio Ziniades" />
+        </Col>
+        <Col className="ps-5 py-2">
           <h1 className="title">
             Hello{" "}
             <span role="img" aria-label="emoji">
               👋🏼
             </span>
             <br />
-            I'm <Link to="/">Emilio Ziniades</Link>
+            I'm {data.site.siteMetadata.author}
           </h1>
           <HeroMenu />
           <div className="description">
             <br />
-            Interdisciplinary research into Political Economy, Cryptocurrencies,
-            and Tech. Based in Cape Town.
+            {data.site.siteMetadata.blurb}
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </StyledHero>
   )
 }
-
 export default Hero

@@ -5,7 +5,7 @@ import ContactForm from "../components/contactForm"
 
 export default function ContactPage() {
   return (
-    <Layout>
+    <Layout pageTitle="📬 Contact">
       <ContactForm />
     </Layout>
   )

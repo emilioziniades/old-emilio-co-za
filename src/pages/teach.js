@@ -3,19 +3,19 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
-import { StyledContainer } from "../components/styles"
+import { StyledArticle } from "../components/styles"
 
 export default function Teach({ data }) {
   const teachPage = data.allMdx.nodes[0].body
   return (
-    <Layout>
-      <StyledContainer>
+    <Layout pageTitle="📚 Teach">
+      <StyledArticle>
         <MDXRenderer>{teachPage}</MDXRenderer>
         <p>
           If you are interested, please{" "}
           <Link to="/contact">send me a message</Link>
         </p>
-      </StyledContainer>
+      </StyledArticle>
     </Layout>
   )
 }
@@ -23,7 +23,7 @@ export default function Teach({ data }) {
 export const query = graphql`
   {
     allMdx(
-      filter: { frontmatter: { type: { eq: "page" }, page: { in: "teach" } } }
+      filter: { frontmatter: { type: { eq: "page" }, page: { eq: "teach" } } }
     ) {
       nodes {
         id

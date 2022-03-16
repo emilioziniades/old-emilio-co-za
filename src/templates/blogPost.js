@@ -3,13 +3,13 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
-import { StyledContainer } from "../components/styles"
+import { StyledArticle } from "../components/styles"
 
 const BlogPost = ({ data }) => {
   const { previous, next } = data
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <StyledContainer>
+      <StyledArticle>
         <p>{data.mdx.frontmatter.date}</p>
         <article>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
@@ -38,7 +38,7 @@ const BlogPost = ({ data }) => {
             </li>
           </ul>
         </nav>
-      </StyledContainer>
+      </StyledArticle>
     </Layout>
   )
 }

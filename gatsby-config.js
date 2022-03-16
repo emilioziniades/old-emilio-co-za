@@ -2,7 +2,10 @@ module.exports = {
   siteMetadata: {
     title: `Emilio Ziniades Portfolio Website`,
     description: `Emilio Ziniades: teaches, writes, codes`,
-    author: `emilioziniades@gmail.com`,
+    author: `Emilio Ziniades`,
+    authorEmail: `emilioziniades@gmail.com`,
+    blurb:
+      "Interdisciplinary research into Political Economy, Cryptocurrencies and Technology. Based in Cape Town, South Africa.",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +14,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
+    `styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
