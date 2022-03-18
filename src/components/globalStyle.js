@@ -1,24 +1,24 @@
 import { createGlobalStyle } from "styled-components"
 
 export const colours = {
-  red: "#e69eab",
-  blue: "#becfee",
-  green: "#adebce",
-  yellow: "#ffdb70",
-  orange: "#feb95f",
+  colour1: "#e69eab",
+  colour2: "#becfee",
+  colour3: "#adebce",
+  colour4: "#ffdb70",
+  colour5: "#feb95f",
+  colour6: "rebeccapurple",
   text: "black",
-  textAlt: "white",
+  textSecondary: "grey",
   foreground: "white",
   background: "#f0ead6",
-  backgroundAlt: "black",
   link: "#3772ff",
   linkHover: "#5E4B56",
 }
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
-        // border: 1px solid green;
+        border: 1px solid colour3;
     }
     html {
         width: 100%;

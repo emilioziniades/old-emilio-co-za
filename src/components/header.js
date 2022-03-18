@@ -4,18 +4,18 @@ import { Helmet } from "react-helmet"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 
-import { StyledHeader, StyledLogo, StyledNav } from "./styles"
+import { StyledHeader, StyledLogo } from "./styles"
 
 const Header = () => {
   return (
     <StyledHeader>
-      <Navbar expand="sm">
+      <Navbar expand="lg">
         <Navbar.Brand>
           <StyledLogo to="/">ez.</StyledLogo>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
-          <StyledNav>
+          <Nav className="align-items-end">
             <Nav.Item className="menu-item">
               <Link
                 to="/teach"
@@ -68,7 +68,7 @@ const Header = () => {
                 contact
               </Link>
             </Nav.Item>
-          </StyledNav>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     </StyledHeader>

@@ -10,9 +10,9 @@ const AboutHero = ({ blurb }) => {
         <StaticImage
           src="../images/heroPicture.png"
           alt="Picture of Emilio Ziniades"
+          layout="constrained"
           className="mx-auto"
-          placeholder="blurry"
-          layout="fixed"
+          quality={100}
         />
       </Col>
       <Col>

@@ -6,7 +6,6 @@ import Col from "react-bootstrap/Col"
 
 import HeroMenu from "./heroMenu"
 import { StyledHero } from "./styles"
-import image from "../images/drawing.jpg"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -19,7 +18,6 @@ const Hero = () => {
       }
     }
   `)
-  console.log(data)
   return (
     <StyledHero>
       <Row>
@@ -28,7 +26,7 @@ const Hero = () => {
           className="d-flex justify-content-md-center align-items-md-center"
         >
           <StaticImage
-            src="../images/drawing.jpg"
+            src="../images/drawing.png"
             alt="Emilio Ziniades"
             placeholder="blurry"
             // layout="fixed"

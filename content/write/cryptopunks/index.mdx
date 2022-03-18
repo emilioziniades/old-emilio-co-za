@@ -6,9 +6,20 @@ type: "blog"
 page: "post"
 ---
 
+import example1 from "./example_1.png"
+import example2 from "./example_2.png"
+import figure1 from "./figure_1.png"
+import figure2 from "./figure_2.png"
+import figure3 from "./figure_3.png"
+import InteractiveChart from "./interactiveChart.js"
+
+import { StaticImage } from "gatsby-plugin-image"
+
 ```toc
 
 ```
+
+<InteractiveChart />
 
 ## Introduction
 
@@ -96,7 +107,7 @@ Let's assume there are only 10 Punks and 5 people, and that each person owns exa
 
 Focus on the two colums in bold. Since at every point, the cumulative share of people is equal to the cumulative share of Punks, this scenario describes the equal distribution of Punks. In Example 1, I have plotted _cumulative share of people_ vs _cumulative share of Punks_.
 
-<!---- insert example_1.png here --->
+<img src={example1} alt="Example 1" />
 
 In Economic jargon, this is called a Lorenz curve. It graphically represent income or wealth (or Punks) distribution. It isn't actually curved yet, because we have graphed the situation of perfect equality. Consider a more unequal scenario: There are still 10 Punks and 5 people, but one person has 6 Punks, and everyone else only has 1 Punk. As a table, that would look like this.
 
@@ -111,6 +122,7 @@ In Economic jargon, this is called a Lorenz curve. It graphically represent inco
 Importantly, we have sorted the table from lowest number of Punks owned to highest number of Punks owned. Here, the bottom 80% of people own only 40% of all Punks. The Lorenz Curve for this scenario is pictured in Example 2.
 
 <!---- insert example_2.png here --->
+<img src={example2} alt="Example 2" />
 
 As you can see, situations of inequality are graphically described by deviation from the dashed diagonal line representing equality. The more unequal the distribution, the further away the Lorenz Curve is from the line of equality.
 
@@ -168,15 +180,18 @@ Finally, once the data had been processed, the Lorenz curves and Gini coefficien
 
 Figure 1 below represents the distribution of Punks as represented by Lorenz curves at two distinct points in time: in 2017 after all Punks had been claimed by their initial owners, and in March 2022.
 
-<!--- insert Figure 1 here -->
+<img src={figure1} alt="Figure 1" />
 
 The main conclusion to be drawn here is that the distribution of Punks actually became more equal over time. After all Punks had been claimed, the Gini coefficient was 0.83. Looking at the blue line, the bottom 80% of Punk owners owned just over 10% of all Punks. Five years later, in March 2020, the Gini coefficient dropped to 0.597. This is still very unequal though, and considering the red line, you can see that the bottom 80% of Punk owners still only owned roughly 30% of all Punks. So the CryptoPunks market changed from being _very very unequal_, to being _just slightly more equal but still very unequal_.
 
 Figure 2 below shows a more gradual change in distribution. It has the same start and end points as Figure 1, but it includes 18 other points spaced approximately 4 months apart. The line colours form a gradient from blue to red. Blue lines occured further in the past, and red lines occured more recently. There was a noticeable jump that occured around April 2021. This is roughly in the period when the world was in the midst of an fervent NFT mania, just a month after the record breaking [auction](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million) of Beeple's The First 5000 Days at Christies. This booming NFT market is not unlike the ICO (Initial Coin Offering) [boom of 2017](https://www.forbes.com/sites/jeffkauflin/2018/10/29/where-did-the-money-go-inside-the-big-crypto-icos-of-2017/?sh=5e1e5fd7261b). Interestingly, the Gini coefficient goes down during this period. This also corresponds with a doubling in the number of addresses that hold Punks, from 1073 in January 2021 to 2105 in April 2021.
 
-<!--- insert figure 2 here --->
+<img src={figure2} alt="Figure 2" />
 
 So far, I have only discussed the distribution of Punks tokens among addresses. Really, one shouldn't weight each Punk equally, since there is a large degree of variation in the price that they are sold for. So, instead of considering the distribution of Punks themselves, one could consider the distribution of the Ether value of those Punks. This accounts for the variation in sales prices. When one does this, the picture changes slightly, but not too significantly, as can be seen in Figure 3 below.
+
+
+<img src={figure3} alt="Figure 3" />
 
 The most salient point worth mentioning is that the Ether earned due to Punks sales actually becomes _more_ unequal for a period, before following the trend observed in Figures 1 and 2 of decreasing inequality and smaller Gini coefficients.
 

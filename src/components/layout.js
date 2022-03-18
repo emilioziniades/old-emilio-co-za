@@ -4,20 +4,19 @@ import { StyledContainer, StyledInnerContainer } from "./styles"
 import GlobalStyle from "./globalStyle"
 import Header from "./header"
 import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
 
 const Layout = ({ pageTitle, children }) => {
   return (
-    <Container fluid="sm">
-      <StyledContainer fluid="sm">
-        <GlobalStyle />
-        <title>{pageTitle}</title>
-        <Header />
-        <main id="main-content">
-          {pageTitle && <h1 className="text-center">{pageTitle}</h1>}
-          {children}
-        </main>
-      </StyledContainer>
-    </Container>
+    <StyledContainer fluid="lg">
+      <Header />
+      <GlobalStyle />
+      <title>{pageTitle}</title>
+      <main id="main-content" className="mx-auto">
+        {pageTitle && <h1 className="text-center">{pageTitle}</h1>}
+        {children}
+      </main>
+    </StyledContainer>
   )
 }
 

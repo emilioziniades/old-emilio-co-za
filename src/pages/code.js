@@ -40,7 +40,7 @@ export default function CodePage({ data }) {
       </h3>
       <Row className="justify-content-start">
         {projects.map(project => (
-          <StyledCard>
+          <StyledCard className="m-3 p-3">
             <StyledCard.Title as="h2">
               {project.frontmatter.title}
             </StyledCard.Title>
@@ -59,7 +59,7 @@ export default function CodePage({ data }) {
                 variant="primary"
                 size="sm"
                 href={project.frontmatter.link}
-                className="source-link"
+                // className="source-link"
               >
                 Source Code
               </Button>
