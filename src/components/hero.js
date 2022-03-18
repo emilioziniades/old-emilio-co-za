@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
@@ -26,7 +27,12 @@ const Hero = () => {
           md="4"
           className="d-flex justify-content-md-center align-items-md-center"
         >
-          <img src={image} alt="Emilio Ziniades" />
+          <StaticImage
+            src="../images/drawing.jpg"
+            alt="Emilio Ziniades"
+            placeholder="blurry"
+            // layout="fixed"
+          />
         </Col>
         <Col className="ps-5 py-2">
           <h1 className="title">
