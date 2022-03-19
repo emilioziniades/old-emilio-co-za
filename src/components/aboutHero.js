@@ -6,12 +6,10 @@ import Col from "react-bootstrap/Col"
 const AboutHero = ({ blurb }) => {
   return (
     <Row>
-      <Col>
+      <Col className="d-flex justify-content-center">
         <StaticImage
           src="../images/heroPicture.png"
           alt="Picture of Emilio Ziniades"
-          layout="constrained"
-          className="mx-auto"
           quality={100}
         />
       </Col>

@@ -21,18 +21,17 @@ const Hero = () => {
   return (
     <StyledHero>
       <Row>
-        <Col
-          md="4"
-          className="d-flex justify-content-md-center align-items-md-center"
-        >
+        <Col>
           <StaticImage
             src="../images/drawing.png"
             alt="Emilio Ziniades"
-            placeholder="blurry"
+            placeholder="blurred"
+            loading="eager"
+            imgClassName="hero-image"
             // layout="fixed"
           />
         </Col>
-        <Col className="ps-5 py-2">
+        <Col className="px-4 py-2">
           <h1 className="title">
             Hello{" "}
             <span role="img" aria-label="emoji">

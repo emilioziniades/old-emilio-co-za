@@ -55,6 +55,7 @@ const Article = styled(Card)`
   }
   img {
     width: 100%;
+    height: auto;
     margin: 2rem 0;
   }
 `
@@ -130,9 +131,6 @@ export const StyledHero = styled.div`
   a {
     text-decoration: none;
     color: ${colours.text};
-  }
-  img {
-    width: 20rem;
   }
 `
 

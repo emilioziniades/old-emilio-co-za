@@ -18,7 +18,7 @@ export const colours = {
 export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
-        border: 1px solid colour3;
+        // border: 1px solid green;
     }
     html {
         width: 100%;

@@ -38,7 +38,7 @@ export default function CodePage({ data }) {
         {" "}
         More on <a href="https://github.com/emilioziniades"> Github </a>
       </h3>
-      <Row className="justify-content-start">
+      <Row className="justify-content-center">
         {projects.map(project => (
           <StyledCard className="m-3 p-3">
             <StyledCard.Title as="h2">
