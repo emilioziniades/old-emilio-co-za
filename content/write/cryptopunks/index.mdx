@@ -19,7 +19,6 @@ import { StaticImage } from "gatsby-plugin-image"
 
 ```
 
-<InteractiveChart />
 
 ## Introduction
 
@@ -207,9 +206,11 @@ This project was more an illustration of what is possible when conducting econom
 
 [This paper by Chen and others](https://hummedia.manchester.ac.uk/institutes/gdi/publications/workingpapers/bwpi/bwpi-wp-10910.pdf)illustrates these issues, considering the specific example of attempting to calcuate the Gini coefficient for China. They determine that there are over 20 different estimations of Chinese Gini coefficients. The year 1995 is illustrative. Several economists have tried to derive estimates of the Gini coefficient for that year, using a variety of data sources and methodologies, all with different results. The lowest estimate was 0.33 and the higest was 0.45!
 
-Compare that to the data gathering process undertaken to research the CryptoPunks. The exact distribution of Punks among addresses could be calculated exactly, not only for the present time, but for every possible period in time since the smart contract was deployed. To really emphasize this possibilty of 'time travel', I put together an interactive version of Figure 3 above. You can move the slider, and see how the Lorenz curve and Gini coefficient for the distribution of CryptoPunks changes over time. This is not an estimate - is is a perfectly accurate mapping of CryptoPunks to addresses.
+Compare that to the data gathering process undertaken to research the CryptoPunks. The exact distribution of Punks among addresses could be calculated exactly, not only for the present time, but for every possible period in time since the smart contract was deployed. To really emphasize this possibilty of 'time travel', I put together an interactive version of Figure 3 above. You can move the slider, and see how the Lorenz curve and Gini coefficient for the distribution of CryptoPunks changes over time. This is not an estimate - is is a perfectly accurate mapping of CryptoPunks to addresses over time.
 
-<!--- insert interactive graph here --->
+<InteractiveChart />
+
+Drag the slider above to view the distribution of the ETH value of Punks over time.
 
 Public blockchains like Ethereum and Bitcoin allow for complete information: every transaction amount, sender and receiver is publicly known. And one cannot fabricate transactions on the blockchain. They are very costly to falsify, and as the transaction gets buried deeper into the blockchain, the cost to falsify increase exponentially. In addition, it is trivial to quickly verify that a certain transaction genuinely belongs to the set of transactions included on the blockchain.
 
