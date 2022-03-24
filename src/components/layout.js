@@ -1,10 +1,8 @@
 import React from "react"
 
-import { StyledContainer, StyledInnerContainer } from "./styles"
+import { StyledContainer } from "./styles"
 import GlobalStyle from "./globalStyle"
 import Header from "./header"
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
 
 const Layout = ({ pageTitle, children }) => {
   return (

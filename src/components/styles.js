@@ -5,7 +5,6 @@ import { colours } from "./globalStyle"
 import { Link } from "gatsby"
 import Card from "react-bootstrap/Card"
 import Container from "react-bootstrap/Container"
-import Nav from "react-bootstrap/Nav"
 import Form from "react-bootstrap/Form"
 
 export const StyledContainer = styled(Container)`

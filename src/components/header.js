@@ -9,6 +9,11 @@ import { StyledHeader, StyledLogo } from "./styles"
 const Header = () => {
   return (
     <StyledHeader>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Emilio Ziniades</title>
+        <link rel="canonical" href="https://emilio.co.za/" />
+      </Helmet>
       <Navbar expand="lg">
         <Navbar.Brand>
           <StyledLogo to="/">ez.</StyledLogo>
