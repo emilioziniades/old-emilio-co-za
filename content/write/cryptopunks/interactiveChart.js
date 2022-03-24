@@ -3,9 +3,10 @@ import Form from "react-bootstrap/Form"
 import Chart from "chart.js/auto"
 import { Scatter } from "react-chartjs-2"
 
-const getData = filename => {
-  const rawData = require(filename)
-  const myData = []
+const inequalityData = require("./balances_interactive.json")
+
+const parseData = rawData => {
+  const cleanData = []
 
   for (let i = 0; i < rawData.length; i++) {
     var points = []
@@ -18,24 +19,24 @@ const getData = filename => {
       colour: rawData[i].colour,
       points: points,
     }
-    myData.push(current)
+    cleanData.push(current)
     points = []
   }
 
-  return myData
+  return cleanData
 }
 
 const InteractiveChart = () => {
-  const myData = getData("./balances_interactive.json")
+  const graphData = parseData(inequalityData)
   const [time, setTime] = useState(0)
   const data = {
     datasets: [
       {
-        data: myData[time].points,
-        label: `${myData[time].date} (n = ${
-          myData[time].points.length
-        }, gini = ${myData[time].gini.toFixed(3)})`,
-        backgroundColor: myData[time].colour,
+        data: graphData[time].points,
+        label: `${graphData[time].date} (n = ${
+          graphData[time].points.length
+        }, gini = ${graphData[time].gini.toFixed(3)})`,
+        backgroundColor: graphData[time].colour,
       },
     ],
   }
@@ -74,7 +75,7 @@ const InteractiveChart = () => {
       },
       line: {
         borderWidth: 4,
-        borderColor: myData[time].colour,
+        borderColor: graphData[time].colour,
       },
     },
     plugins: {
@@ -94,7 +95,7 @@ const InteractiveChart = () => {
           <Form.Range
             value={time}
             min={0}
-            max={myData.length - 1}
+            max={graphData.length - 1}
             onChange={event => setTime(event.target.value)}
           />
         </Form.Group>
