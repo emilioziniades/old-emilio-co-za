@@ -22,6 +22,7 @@ export const StyledContainer = styled(Container)`
 
 const Article = styled(Card)`
   background: ${colours.foreground};
+  display: ${props => (props.noFlex ? "inherit" : "flex")};
   a {
     display: inline-block;
     text-decoration: underline;
@@ -56,11 +57,14 @@ const Article = styled(Card)`
   img {
     width: 100%;
     height: auto;
-    margin: 2rem 0;
   }
 `
-export const StyledArticle = ({ children }) => {
-  return <Article className="p-lg-5 p-3 m-lg-5 m-3">{children}</Article>
+export const StyledArticle = ({ noFlex, children }) => {
+  return (
+    <Article noFlex className="p-lg-5 p-3 m-lg-5 m-3">
+      {children}
+    </Article>
+  )
 }
 export const StyledHeader = styled.header`
   width: 100%;
