@@ -18,8 +18,8 @@ const ContactForm = () => {
       >
         <h2 className="title">Get in touch!</h2>
         <p>
-          Have any questions, want to work together, or just for a chat. Fill
-          out the form below and I'll be in touch.{" "}
+          Have any questions, want to work together, or just want to chat. Fill
+          out the form below and I'll get back to you shortly.{" "}
         </p>
         <Form.Control type="hidden" name="bot-field" />
         <Form.Control type="hidden" name="form-name" value="Contact" />
