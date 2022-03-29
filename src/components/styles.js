@@ -14,9 +14,6 @@ export const StyledContainer = styled(Container)`
     width: 100%;
     max-width: 62.5rem;
   }
-  h1 {
-    padding: 0rem 2rem;
-  }
 `
 
 const Article = styled(Card)`
