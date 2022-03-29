@@ -21,6 +21,7 @@ function pillColour(tagName) {
     "Pandas",
     "Web3py",
     "Ethers",
+    "ChartJS",
   ]
 
   return languages.includes(tagName)
@@ -73,7 +74,10 @@ export default function CodePage({ data }) {
 
 export const query = graphql`
   {
-    portfolio: allMdx(filter: { frontmatter: { type: { eq: "project" } } }) {
+    portfolio: allMdx(
+      sort: { order: ASC, fields: frontmatter___order }
+      filter: { frontmatter: { type: { eq: "project" } } }
+    ) {
       projects: nodes {
         body
         frontmatter {
