@@ -38,15 +38,15 @@ export const GlobalStyle = createGlobalStyle`
     }
     h1 {
         font-weight: 700;
-        font-size: 2rem;
-        line-height: 2.375rem;
+        font-size: 2.625rem;
+        line-height: 3rem;
         color: black;
         margin: 2rem 0rem;
     }
     h2 {
         font-weight: 700;
-        font-size: 1.25rem;
-        line-height: 1.5rem;
+        font-size: 2rem;
+        line-height: 2rem;
         color: black;
     }
     a {

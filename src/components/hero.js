@@ -27,6 +27,7 @@ const Hero = () => {
             alt="Emilio Ziniades"
             placeholder="blurred"
             loading="eager"
+            height={700}
           />
         </Col>
         <Col className="px-4 py-2">
