@@ -12,7 +12,9 @@ const BlogPost = ({ data }) => {
       <StyledArticle>
         <p>{data.mdx.frontmatter.date}</p>
         <article>
-          <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          <MDXRenderer headings={data.mdx.headings}>
+            {data.mdx.body}
+          </MDXRenderer>
         </article>
         <nav>
           <ul>
@@ -53,6 +55,10 @@ export const query = graphql`
         date(formatString: "MMMM D, YYYY")
       }
       body
+      headings {
+        depth
+        value
+      }
     }
 
     previous: mdx(id: { eq: $previousPostId }) {

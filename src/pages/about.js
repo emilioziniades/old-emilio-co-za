@@ -10,7 +10,7 @@ export default function IndexPage({ data }) {
   const aboutPage = data.allMdx.nodes[0]
   return (
     <Layout pageTitle="🔍 About">
-      <StyledArticle noFlex>
+      <StyledArticle noflex>
         <StaticImage
           src="../images/heroPicture.png"
           alt="Picture of Emilio Ziniades"

@@ -18,7 +18,7 @@ export const StyledContainer = styled(Container)`
 
 const Article = styled(Card)`
   background: ${colours.foreground};
-  display: ${props => (props.noFlex ? "inherit" : "flex")};
+  display: ${props => (props.noflex ? "inherit" : "flex")};
   a {
     display: inline-block;
     text-decoration: underline;
@@ -55,9 +55,9 @@ const Article = styled(Card)`
     height: auto;
   }
 `
-export const StyledArticle = ({ noFlex, children }) => {
+export const StyledArticle = ({ noflex, children }) => {
   return (
-    <Article noFlex className="p-lg-5 p-3 m-lg-5 m-3">
+    <Article noflex={noflex} className="p-lg-5 p-3 m-lg-5 m-3">
       {children}
     </Article>
   )
@@ -180,5 +180,11 @@ export const StyledCard = styled(Card)`
 
   .topic {
     background: ${colours.colour4} !important;
+  }
+`
+
+export const StyledTOC = styled.div`
+  ul {
+    list-style-type: circle;
   }
 `
