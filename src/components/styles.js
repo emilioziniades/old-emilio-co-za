@@ -185,6 +185,6 @@ export const StyledCard = styled(Card)`
 
 export const StyledTOC = styled.div`
   ul {
-    list-style-type: circle;
+    list-style-type: disc;
   }
 `

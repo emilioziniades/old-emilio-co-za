@@ -64,49 +64,46 @@ function getStartItems(items, itemsWithChildren, startDepth) {
   return startItems
 }
 
-// var itemsWithChildren = getAllChildren(test)
-var itemsWithChildren = getAllChildren(test)
-const NestedList = ({ item, children }) => {
+const ListItem = ({ item, children }) => (
+  <li key={item}>
+    <Link to={"#" + slugger.slug(item)}>{item}</Link>
+    {children}
+  </li>
+)
+
+const NestedList = ({ item, children, allItems }) => {
   if (children.length === 0) {
-    return <li>{item}</li>
+    return <ListItem item={item} />
   } else {
     const childItems = children.map(child => (
-      <NestedList item={child} children={itemsWithChildren[child]} />
+      <NestedList item={child} children={allItems[child]} allItems={allItems} />
     ))
     return (
       <>
-        <li>{item}</li>
-        <ul>{childItems}</ul>
+        <ListItem item={item}>
+          <ul>{childItems}</ul>
+        </ListItem>
       </>
     )
   }
 }
 
 const TableOfContents = ({ headings }) => {
-  // itemsWithChildren = getAllChildren(headings)
-  const startItems = getStartItems(test, itemsWithChildren, 2)
+  const itemsWithChildren = getAllChildren(headings)
+  const startItems = getStartItems(headings, itemsWithChildren, 2)
   return (
     <StyledTOC>
       <ul>
         {startItems.map(start => (
-          <NestedList item={start.value} children={start.children} />
+          <NestedList
+            item={start.value}
+            children={start.children || []}
+            allItems={itemsWithChildren}
+          />
         ))}
-      </ul>
-      <ul>
-        {headings
-          .filter(heading => heading.depth !== 1)
-          .map(heading => (
-            <li key={heading.value}>
-              <Link to={"#" + slugger.slug(heading.value)}>
-                {heading.value}
-              </Link>
-            </li>
-          ))}
       </ul>
     </StyledTOC>
   )
 }
 
 export default TableOfContents
-
-// ----------------------------------------------------------------------
