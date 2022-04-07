@@ -1,22 +1,8 @@
 import React from "react"
-import Slugger from "github-slugger"
 import { slug } from "github-slugger"
 import { Link } from "gatsby"
 
 import { StyledTOC } from "./styles"
-
-const test = [
-  { value: "root", depth: 1 },
-  { value: "A", depth: 2 },
-  { value: "A.1", depth: 3 },
-  { value: "A.1.a", depth: 4 },
-  { value: "A.1.b", depth: 4 },
-  { value: "A.2", depth: 3 },
-  { value: "B", depth: 2 },
-  { value: "B.1", depth: 3 },
-]
-
-const slugger = new Slugger()
 
 function childrenOf(parent, items) {
   var children = []
