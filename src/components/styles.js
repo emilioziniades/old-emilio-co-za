@@ -12,7 +12,7 @@ export const StyledContainer = styled(Container)`
   margin: 0 auto;
   #main-content {
     width: 100%;
-    max-width: 62.5rem;
+    max-width: 65rem;
   }
 `
 
@@ -119,7 +119,7 @@ export const StyledHeader = styled.header`
   }
 `
 export const StyledLogo = styled(Link)`
-  font-size: 2rem;
+  font-size: 3rem !important;
   font-weight: 900;
   color: ${colours.text} !important;
   margin: 1rem;

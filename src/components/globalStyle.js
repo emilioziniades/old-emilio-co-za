@@ -42,20 +42,12 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 2.375rem;
         color: black;
         margin: 2rem 0rem;
-        @media (min-width: 1200px) {
-            font-size: 2.625rem;
-            line-height: 4rem;
-        }
     }
     h2 {
         font-weight: 700;
         font-size: 1.25rem;
         line-height: 1.5rem;
         color: black;
-        @media (min-width: 1200px) {
-            font-size: 2rem;
-            line-height: 3rem;
-        }
     }
     a {
         display: inline-block;
