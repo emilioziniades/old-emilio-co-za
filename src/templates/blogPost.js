@@ -4,13 +4,16 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
 import { StyledArticle } from "../components/styles"
+import TableOfContents from "../components/tableOfContents"
 
 const BlogPost = ({ data }) => {
   const { previous, next } = data
+  const hasHeadings = data.mdx.headings.length !== 0
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <StyledArticle>
         <p>{data.mdx.frontmatter.date}</p>
+        {hasHeadings && <TableOfContents headings={data.mdx.headings} />}
         <article>
           <MDXRenderer headings={data.mdx.headings}>
             {data.mdx.body}

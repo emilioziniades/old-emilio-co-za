@@ -1,5 +1,6 @@
 import React from "react"
 import Slugger from "github-slugger"
+import { slug } from "github-slugger"
 import { Link } from "gatsby"
 
 import { StyledTOC } from "./styles"
@@ -66,7 +67,7 @@ function getStartItems(items, itemsWithChildren, startDepth) {
 
 const ListItem = ({ item, children }) => (
   <li key={item}>
-    <Link to={"#" + slugger.slug(item)}>{item}</Link>
+    <Link to={"#" + slug(item)}>{item}</Link>
     {children}
   </li>
 )
@@ -93,6 +94,7 @@ const TableOfContents = ({ headings }) => {
   const startItems = getStartItems(headings, itemsWithChildren, 2)
   return (
     <StyledTOC>
+      <h5> Contents </h5>
       <ul>
         {startItems.map(start => (
           <NestedList
