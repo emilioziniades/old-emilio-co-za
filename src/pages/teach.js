@@ -12,8 +12,7 @@ export default function Teach({ data }) {
       <StyledArticle>
         <MDXRenderer>{teachPage}</MDXRenderer>
         <p>
-          If you are interested, please{" "}
-          <Link to="/contact">send me a message</Link>
+          If you are interested, please <Link to="/contact">contact me</Link>.
         </p>
       </StyledArticle>
     </Layout>

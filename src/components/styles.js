@@ -62,6 +62,7 @@ export const StyledArticle = ({ noflex, children }) => {
     </Article>
   )
 }
+
 export const StyledHeader = styled.header`
   width: 100%;
   max-width: 62.5rem;

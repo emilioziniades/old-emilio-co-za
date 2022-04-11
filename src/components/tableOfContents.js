@@ -42,7 +42,6 @@ function getAllChildren(items) {
 function getStartItems(items, itemsWithChildren, startDepth) {
   const startItems = []
   for (const i of items) {
-    console.log(i)
     if (i.depth === startDepth) {
       const obj = { value: i.value, children: itemsWithChildren[i.value] }
       startItems.push(obj)
