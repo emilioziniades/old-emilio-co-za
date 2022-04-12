@@ -8,9 +8,6 @@ page: "post"
 
 import { StaticImage } from "gatsby-plugin-image"
 
-import example1 from "./example_1.png"
-import example2 from "./example_2.png"
-import example3 from "./example_3.png"
 import figure1 from "./figure_1.png"
 import figure2 from "./figure_2.png"
 import figure3 from "./figure_3.png"
@@ -20,35 +17,12 @@ import TableOfContents from "../../../src/components/tableOfContents.js"
 
 ## Introduction
 
-Since graduating with an economics undergraduate in 2019, I have spent the last two years exploring cryptocurrencies and blockchains. I felt comfortable enough approaching it from an economics perspective: I applied the concepts of money, incentives and game theory that I had been studying for the past few years.
+[CryptoPunks](https://www.larvalabs.com/cryptopunks) are widely considered to be the first NFT project on the Ethereum blockchain. I set out to answer the question: how are these NFTs are distributed across their owners?
 
-But I found that my programming and computer science background was heavily lacking, and that this emerging discipline of cryptocurrencies was actually the marriage of economics and computer science, and that both are needed to fully engage with the technology at a nuts-and-bolts level.
+This post will first briefly introduce CryptoPunks and NFTs. It then measures the distribution of CryptoPunks over time, deriving [Lorenz curves](https://en.wikipedia.org/wiki/Lorenz_curve) and [Gini coefficients](https://en.wikipedia.org/wiki/Gini_coefficient) as a measure of inequality of Punks (and the Ether value of those Punks).
+Finally, it considers, in general, the possibility of conducting economic research on blockchains.
 
-So during the pandemic, I spent a lot of time programming- I learnt Python, I learnt HTML, JavaScript, React and static-site generators. I taugh myself Go and began to pick up some rudimentary algorithms and data structures.
-
-In addition to that, I also learnt a lot about cryptocurrencies. In particular, I worked through the 'Mastering' series by Andreas Antonopoulos, which includes Mastering Bitcoin, Mastering Ethereum and Mastering the Lightning Network.
-
-Of the plethora of cryptocurrencies that exist today, I am certainly most interested in Bitcoin (and Lighting) and Ethereum.
-
-Whilst I find the idea of a general programable blockchain, as exemplified by Ethereum, to be absolutely fascinating in its limitless potential for a variety of use cases. Decentralized Finance ('Defi') and Non-Fungible Tokens ('NFTs') being only two of the possibilites we have dreamed up. I also have certain concerns about Ethereum's scaling solutions. Currrently, Ethereum layer 1 is clogged with transactions, forcing users to pay high fees to interact with the network. For example, consider the [ConstitutionDAO fiasco](https://www.theverge.com/2021/11/24/22800995/constitutiondao-refund-progress-steep-gas-fees-cryptocurrency) where over $1 million in fees were paid in total for a $49.8 million failed bid, and the median donor lost about 50% of their contribution to deposit and withdrawal fees.
-
-There are various layer 2 Ethererum solutions in their infancy, such as Zero Knowledge Rollups and Optimistic Rollups. In addition, the mythical ETH 2.0 includes sharding as a potential remedy to growing pains. But none of these solutions are being widely used at the moment, and the result is an Ethereum network like a busy Johannesburg highway at 4PM in the afternoon, with little thoroughfare and a lot of annoyed users.
-
-And so in more recent times, my attention has shifted towards the Lightning Network, which in my opinion is an absolutely ingenous layer 2 solution. It inherits all the security primitives of its layer 1, the Bitcoin network, whilst enabling instant confirmation and microtransactions. In my economist's head, Bitcoin and Lightning respectively also corresponds nicely with the idea of [clearing and settling transactions](<https://en.wikipedia.org/wiki/Clearing_(finance)>).
-
-In any case, this is not the place for weighing up the scaling possibilities and options for Ethereum and Bitcoin. Such a discussion would take up a series of articles, let alone one. Suffice to say that they are both definitive blue chip cryptocurrencies in the space, with slightly different use-cases and applications.
-
-Today I would like to narrow the focus, and look very specifically at one Ethereum project, CryptoPunks. It is arguably the first NFT project, the project that served as one of the sources of inspiration for the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) used by every NFT project today, in order to standardize API access with `Assign` and `Transfer` events.
-
-The [CryptoPunks Smart Contract](https://github.com/larvalabs/cryptoPunks/blob/master/contracts/CryptoPunksMarket.sol) was deployed in 2017, a year before the ERC721 standard was finalized. (Actually this was second version of the smart contract. The first had a pretty fatal [bug](https://twitter.com/0xfoobar/status/1374604091263905794?s=21) - but we won't be getting into any of that today). This means that interacting with the CryptoPunks smart contract programatically required some custom tinkering.
-
-This post wiIl first briefly introduce CryptoPunks and NFTs. Then, it will proceed to try and answer the question: how are these Punks distributed over time? Both in terms of Punk ownership, and in terms of the ETH value of those Punks. Then it will speak more broadly on the idea of conducting economic research on-chain.
-
-For me, one of the really cool things about blockchains is that they represent an immutable, costly to falsify set of transactions. Every _single_ transaction that has every occured on the Bitcoin network can exist on a 500GB hard drive. This is verifiably so: if someone provided you with a transaction they claim occured at in a specific block, you could check if this was the case by deriving the [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) of those transactions. If you really wanted to, you could trace the flow of every single satoshi from the moment it was mined until the present day.
-
-This is incredibly powerful. What it means is that you have a perfect record of every transaction that has occured on that blockchain. It is an economist's dream. Often, when calculating things like [money velocity](https://en.wikipedia.org/wiki/Velocity_of_money), certain assumptions have to be made, you can only really approximate these meaures indirectly. Whereas on a blockchain, you can calculate it directly (see [this chart](http://charts.woobull.com/bitcoin-velocity/)).
-
-As a way of learning more about blockchains, and how to collect data from them, and also because I was genuinely curious, I decided to measure the distribution of CryptoPunks over time, eventually deriving [Lorenz curves](https://en.wikipedia.org/wiki/Lorenz_curve) and [Gini coefficients](https://en.wikipedia.org/wiki/Gini_coefficient) as a measure of inequality in distribution of Punks (and the Ether value of those Punks).
+I have written a [technical explainer](https://emilio.co.za/write/cryptopunks-technical) as a companion to this piece, which goes into more depth regarding certain topics.
 
 ## CryptoPunks
 
@@ -56,139 +30,48 @@ As a way of learning more about blockchains, and how to collect data from them, 
 
 _Image Source: [CryptoPunks website](https://www.larvalabs.com/public/images/product/cryptopunks/punk-variety-2x.png)_
 
-[CryptoPunks](https://www.larvalabs.com/cryptoPunks) is an NFT project by Larva Labs, which consists of 10,000 pixel art characters like the ones above. They were programatically generated to have a combination of different traits, such as hats, hair colour and earrings. Punks are indexed from 0 to 9999. One can see all the Punks in [this image](https://github.com/larvalabs/cryptoPunks/blob/master/Punks.png)
-
-They are one of the first NFT projects. Each individual Punk represents a single token, and each token is unique. The ownership of these Punks is mediated by the [CryptoPunksMarket smart contract](https://github.com/larvalabs/cryptoPunks/blob/master/contracts/CryptoPunksMarket.sol) which was [deployed](https://etherscan.io/address/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB) in June 2017.
+CryptoPunks is an Ethereum Non-Fungible Token (NFT) project by Larva Labs, which consists of 10,000 pixel art characters like the ones above. They were programatically generated to have a combination of different traits, such as hats, hair colour and earrings. Punks are indexed from 0 to 9999. One can see all the Punks in [this image](https://github.com/larvalabs/cryptoPunks/blob/master/Punks.png).
+Each individual Punk represents a single token, and each token is unique. The ownership of these Punks is mediated by the [CryptoPunks smart contract](https://github.com/larvalabs/cryptoPunks/blob/master/contracts/CryptoPunksMarket.sol) which was [deployed](https://etherscan.io/address/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB) in June 2017.
+Actually this was the second version of the smart contract. The first had a fatal [bug](https://twitter.com/0xfoobar/status/1374604091263905794?s=21) - but we won't be getting into any of that today.
 
 The smart contract mediates all ownership, purchase and transferal of Punks. It keeps track of which addresses own which Punks, whether there are any active bids on any Punks, and stores any funds received from sales of Punks, which can then be withdrawn to a user's address. It is essentially a fully automatic marketplace, whose rules are described by the code in the smart contract.
 
 When the contract was deployed, all 10,000 Punks were up for grabs. For free, you could claim a Punk, only paying the gas fee associated with updating the state of the smart contract. After all Punks were assigned, you could either transfer your Punk to someone else for free, put in an offer to buy someone else's Punk, or you could put your own Punk up for sale at a specified price.
+In order to take part, all you had to do is interact with the smart contract.
 
-In order to take part, all you need to do is call certain functions that live in the smart contract. To claim a Punk, you had to call the `getPunk` function, providing the index of the Punk you want to claim. Transfers occur via the `transferPunk` function, and so on.
-
-### Where exactly do the images live?
-
-It is worth noting that the actual images of the Punks are not stored on-chain. The full image of all Punks is 828KB, and it would be prohibitively expensive to store this on the Ethereum blockchain.
-
-Instead of storing the raw images on-chain, most NFT projects today store the images somewhere else online (either at a certain URL or possibly on [IPFS](https://www.ipfs.io/)), and simply include the link to that image within the transaction metadata.
-
-I have some concerns about this. The internet, and the links that comprise it, are not a stable landscape, but rather a fluid and dynamic one. Always shifting, changing, and even [rotting](https://www.theatlantic.com/technology/archive/2021/06/the-internet-is-a-collective-hallucination/619320/). It is possible that one day the URLs referred to on-chain will be nothing more than broken links.
-
-In any case, the CryptoPunks creators also opted to avoid storing the images themselves on-chain. Instead, the Smart Contract refers to the sha256 hash of the image. So given this hash, which is stored immutably on-chain, one can very that an image represents the authentic CryptoPunks collection by hashing the image and comparing that hash to the one in the smart contract. If the hashes are the same, then you can find the verified and geniune picture of your Punk by counting from left to right, top to bottom, starting at 0. This works as long as one can access the image _somewhere_ online.
-
-### Events
-
-In order for third party applications to keep track of the CryptoPunks market, the smart contract broadcasts events when certain actions occur. So there is a `PunkBought` event, as well as a `PunkTransfer` event. These events are stored in the blockchain, and so they are immutable and verifiable in the same way that transactions are. This allows NFT marketplaces such as [Opensea](https://opensea.io/) to keep track of NFT ownership by subscribing to these events. It also allows researchers like myself to collect data on the status of the CryptoPunks market.
-
-Given the initial state of the CryptoPunks marketplace, and all the broadcasted events, one can effectively replay history, by querying an Ethereum node for the emitted events broadcast up until a certain time. This is pretty cool. It means that not only can we check exactly which address own which Punks, but we can do so at every moment in time since the smart contract is deployed.
+The project served as one of the sources of inspiration for the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) used by every NFT project today, which standardizes NFT marketplaces.
+The smart contract was deployed in 2017, a year before ERC721 was finalized.
+This meant that interacting with the CryptoPunks smart contract programatically required some custom tinkering.
 
 ## Inequality
 
-I begun this essay by stating that blockchains will enable economic researchers to gather more, and more accurate data, on the transactions occuring in a certain market. Because every transaction is broadcast between nodes and stored on the blockchain, one effectively has access to every single transaction that has ever taken place on that blockchain. This means that you don't have to make any assumptions about money flows, or derive the money flows from other facts.
+The remainder of this paper tackles the research question: what is the distribution of CryptoPunks? Are they equally distributed among many addresses, or do a few addresses own most of the Punks? And how does the distribution of Punks change over time? Does it disperse over time, or does it concentrate? Also, not all Punks are equally valuable. Some Punks are sold for [millions of dollars](https://www.larvalabs.com/cryptopunks/details/5822), whilst other Punks sell for [less](https://www.larvalabs.com/cryptoPunks/details/2427). So I then consider how the ETH value of Punks is distributed across all Punk owners.
 
-In order to illustrate this point, I decided to tackle a small research question: what is the distribution of CryptoPunks? Are they equally distributed among many addresses, or do a few addresses own most of the Punks. And how does the distribution of Punks change over time? Does it disperse over time, or does it concentrate? Also, not all Punks are equally valuable. Some Punks are sold for [millions of dollars](https://www.larvalabs.com/cryptoPunks/details/5822), whilst other Punks sell for [less](https://www.larvalabs.com/cryptoPunks/details/2427). So I then consider how the ETH value of Punks is distributed across all Punk owners.
+I make use of two economic concepts to conduct this analysis: Lorenz curves and Gini coefficients. For more information, see the [technical explainer](https://emilio.co.za/write/cryptopunks-technical).
 
-### Lorenz curves and Gini coefficients
+Lorenz curves represent inequality graphically. They graph the cumulative percent of people versus the cumulative percent of resources. If resources were distributed equally, the Lorenz Curve would represent a diagonal line going through the origin. The further away the curve is from that diagonal line, the more unequal the market.
 
-Before delving into the results of my analysis, I'll take a short detour to describe two key economics concepts: Lorenz curves and Gini coefficients. Both are ways of repesenting how equal or unequal a distribution is. The former represents inequality graphically, and the latter represents it as a single number.
-
-#### Lorenz curves
-
-Let's assume there are only 10 Punks and 5 people, and that each person owns exactly 2 Punks, and so the Punks are equally distributed. The following situation could be described by this table.
-
-| Person | Share of all people | **Cumulative share of people** | Punks owned | Share of all Punks | **Cumulative share of Punks** |
-| ------ | ------------------- | ------------------------------ | ----------- | ------------------ | ----------------------------- |
-| 1      | 0.2                 | **0.2**                        | 2           | 0.2                | **0.2**                       |
-| 2      | 0.2                 | **0.4**                        | 2           | 0.2                | **0.4**                       |
-| 3      | 0.2                 | **0.6**                        | 2           | 0.2                | **0.6**                       |
-| 4      | 0.2                 | **0.8**                        | 2           | 0.2                | **0.8**                       |
-| 5      | 0.2                 | **1.0**                        | 2           | 0.2                | **1.0**                       |
-
-Focus on the two colums in bold. Since at every point, the cumulative share of people is equal to the cumulative share of Punks, this scenario describes the equal distribution of Punks. In Example 1, I have plotted _cumulative share of people_ vs _cumulative share of Punks_.
-
-<img src={example1} alt="Example 1" />
-
-In Economic jargon, this is called a Lorenz curve. It graphically represent income or wealth (or Punks) distribution. It isn't actually curved yet, because we have graphed the situation of perfect equality. Consider a more unequal scenario: There are still 10 Punks and 5 people, but one person has 6 Punks, and everyone else only has 1 Punk. As a table, that would look like this.
-
-| Person | Share of all people | **Cumulative share of people** | Punks owned | Share of all Punks | **Cumulative share of Punks** |
-| ------ | ------------------- | ------------------------------ | ----------- | ------------------ | ----------------------------- |
-| 1      | 0.2                 | **0.2**                        | 1           | 0.1                | **0.1**                       |
-| 2      | 0.2                 | **0.4**                        | 1           | 0.1                | **0.2**                       |
-| 3      | 0.2                 | **0.6**                        | 1           | 0.1                | **0.3**                       |
-| 4      | 0.2                 | **0.8**                        | 1           | 0.1                | **0.4**                       |
-| 5      | 0.2                 | **1.0**                        | 6           | 0.6                | **1.0**                       |
-
-Importantly, we have sorted the table from lowest number of Punks owned to highest number of Punks owned. Here, the bottom 80% of people own only 40% of all Punks. The Lorenz Curve for this scenario is pictured in Example 2.
-
-<!---- insert example_2.png here --->
-
-<img src={example2} alt="Example 2" />
-
-As you can see, situations of inequality are graphically described by deviation from the dashed diagonal line representing equality. The more unequal the distribution, the further away the Lorenz Curve is from the line of equality.
-
-#### Gini coefficient
-
-But how do we quantify exactly how far away the Lorenz curve is from the line of equality? Let's look at the Lorenz curve from Example 2, and shade the region between the line of equality and the Lorenz curve in red, and the region between the Lorenz curve and the x-axis in blue.
-
-<img src={example3} alt="Example 3" />
-
-As the Lorenz curve moves further away from the line of equality, the red region grows bigger, and the blue region grows smaller. We can represent the degree of inequality as _the fraction of the red area over the sum of the red and blue areas_. As a formula,
-
-```
-						 	 red
-degree of inequality =  ––––––––––––––
-						 red + blue
-```
-
-```
-degree of inequality = red / (red + blue)
-```
-
-We call this 'degree of inequality' the Gini coefficient. There is a more rigorous formula, which you can see on the [Wikipedia page](https://en.wikipedia.org/wiki/Gini_coefficient) and which I use to calculate the values below. But I find this graphical interpretation to be far more intutive, and it suffices for the sake of this post.
-
-Consider the two extreme cases.
-
-In the case of perfect equality, there is no red region, so the the Gini coefficient is just `0 / (0 + blue) = 0`. On the other hand, in the situation of perfect inequality, where one person owns absolutely everything and everyone else owns nothing, there is no blue region, so the Gini coefficient is `red / (red + 0) = 1`. Realistically, the Gini coefficient will tend to 1, but will never actually reach it in practice. So the Gini coefficient ranges from 0 to 1. Figures near 0 describe roughly equal distributions, whereas figures near 1 describe unequal distributions.
-
-If you calculate the Gini coefficient for Example 2 above, you get 0.40, (or 40%).
-
-For context, the [World Bank](https://data.worldbank.org/indicator/SI.POV.GINI) calculated that South Africa, one of the most economically unequal countries in the world, had a Gini coefficient of 0.63 (or 63%) in 2014, whereas the Gini coefficient of Iceland was 0.26 (or 26%) in 2017, making it one of the least unequal countries in the world.
+Gini coefficients quantify inequality as a single number between 0 and 1. Coefficients close to 0 indicate more equal distributions, while coefficients near 1 indicate highly unequal distributions.
 
 ### The distribution of CryptoPunks over time
 
-With this context in place, I proceed to explain the research I undertook with respect to CryptoPunks. All the code for this project can be found on [Github](https://github.com/emilioziniades/Punks-analysis).
+My tool of choice for gathering, processing and graphing the data was Python. All the code for this project can be found on [Github](https://github.com/emilioziniades/Punks-analysis).
 
 #### Fetching and cleaning the data
 
-Using web3py, a popular Python library for interacting with the Ethereum network, I connected to an Ethereum node via [Infura](https://infura.io/) and queried it for all the events broadcast by the CryptoPunks smart contract, from the time the contract was deployed in June 2017, until 12AM on the 7th of March 2022. The aim was to determine which addressed owned which CryptoPunks, and at what price each Punk was last sold for.
+Using `web3py`, a popular Python library for interacting with the Ethereum network, I connected to an Ethereum node via [Infura](https://infura.io/) and queried it for all the events broadcast by the CryptoPunks smart contract, from the time the contract was deployed in June 2017, until 12AM on the 7th of March 2022. The aim was to determine which addressed owned which CryptoPunks, and at what price each Punk was last sold for.
 
-The ERC721 standard defines certain events that any NFT smart contract must broadcast in order to adhere to the standard. This includes the `Transfer` event, which is broadcast whenever an NFT is claimed, sold or transfered without sale. This event should include the to and from addresses, as well as the index number of the NFT. The smart contract could include additional events that specify more information, such as the sale price.
-
-Since CryptoPunks was deployed a whole year before the ERC721 standard was finalized, it does contain some idiosyncrasies in terms of the events it broadcasts. Although it includes a `Transfer` event, which is broadcast when a Punk is either transferred or bought, it also includes `PunkTransfer` and `PunkBought` events, which are broadcast only when a Punk is transfered or bought respectively. `PunkBought` mentions the sale price, whereas `Transfer` does not.
-
-Initially, I thought that using these three events alone would be enough to gather the required information. But due to a [bug in the smart contract](https://github.com/larvalabs/cryptoPunks/issues/19), certain `PunkBought` events broadcast the price as 0 ETH, and the recipient address as 0x0. This bug does not affect the functioning of the market for CryptoPunks itself, but only the accuracy of the information broadcasted via events. This required a non-trivial amount of effort to address. Firstly, the recipient address could be determined from the corresponding `Transfer` event. But since this event does not mention the price, one has to obtain the sale price from the value of the most recent bid on the Punk from the person who eventually bought it, which meant also fetching logs for the `PunkBidEntered` and `PunkBidWithdrawn` events. The Github issue linked above covers this problem in more detail. Overall, 3600 RPC calls were made to the Ethereum node to gather all the required data.
-
-Once the above issues were resolved, I was able to assemble a chronological list of events broadcast by the smart contract, and implemented some accounting logic to keep track of Punk ownership and sale prices.
-
-Beyond the problems mentioned above, there were also some manual changes I had to hard-code.
-
-Firstly, there was the [half a billion dollar sale of Punk 9998](https://twitter.com/larvalabs/status/1453903818308083720) which, if legitimate, would have been the highest price paid for a Punk by far. However, as the linked tweet above discusses, this sale was not legitimate. In fact, the owner of this Punk sold 9998 to himself using two addresses both under his control. The money was borrowed and repaid within the same transaction via a [flash loan](https://ethereumprice.org/guides/article/flash-loans-what-are-they-and-how-do-they-work/). Presumably, the intention was to artificially increase the perceived value of 9998. If included in the analysis, this would have skewed the results heavily. Since it is not a legitimate transaction, I have omitted it from the dataset.
-
-In addition, there are some addresses which do not represent individuals, but rather represent other smart contracts, which provide some additional functionality. [Wrapped Punks](https://www.larvalabs.com/cryptoPunks/accountinfo?account=0xb7f7f6c52f2e2fdb1963eab30438024864c313f6) provides a wrapper for CryptoPunks which allows them to function as bona fide ERC721 tokens. [Punks OTC](https://www.larvalabs.com/cryptoPunks/accountinfo?account=0x6639c089adfba8bb9968da643c6be208a70d6daa) provides an over the counter service, where Punks are traded via direct negotiation between buyers and sellers, instead of openly in the market. Finally, this [smart contract](https://www.larvalabs.com/cryptoPunks/accountinfo?account=0x2cc12318de28edc9c753f7cb22100890af630c2d) owns 44 Punks, and paid exactly 0 ETH in total for them. Not sure exactly what is going on here to be honest. I have made an effort to omit these from the study, since they do not represent individual people holding CryptoPunks. Further research could refine the work done here by determining what happens to the the Punks that are transferred to these other smart contracts.
-
-Admittedly, it is not possible to make a direct connection between addresses and people, and this is one limitation of the work done here, which will be discussed later in the post.
+Again, it must be emphasized that there are two distinct distributions to consider. 1) The distribution of actual Punks and 2) the distribution of the ETH value of those Punks, as represented by the most recent sale price. I will discuss both below.
 
 #### Results
 
-Finally, once the data had been processed, the Lorenz curves and Gini coefficients could be derived. Again, it should be emphasized that there are two distinct distributions to consider. 1) The distribution of actual Punks and 2) the distribution of the ETH value of those Punks, as represented by the most recent sale price. I will discuss both below.
-
-Figure 1 below represents the distribution of Punks as represented by Lorenz curves at two distinct points in time: in 2017 after all Punks had been claimed by their initial owners, and in March 2022.
+Figure 1 shows the distribution of Punks, as represented by Lorenz curves, at two distinct points in time: in 2017 after all Punks had been claimed by their initial owners, and in March 2022.
 
 <img src={figure1} alt="Figure 1" />
 
-The main conclusion to be drawn here is that the distribution of Punks actually became more equal over time. After all Punks had been claimed, the Gini coefficient was 0.83. Looking at the blue line, the bottom 80% of Punk owners owned just over 10% of all Punks. Five years later, in March 2020, the Gini coefficient dropped to 0.597. This is still very unequal though, and considering the red line, you can see that the bottom 80% of Punk owners still only owned roughly 30% of all Punks. So, in scientific terms, the CryptoPunks market changed from being _very unequal_, to being _just slightly more equal but still quite unequal_.
+The main conclusion to be drawn here is that the distribution of Punks actually became more equal over time. Initially, after all Punks had been claimed, the Gini coefficient was 0.83. Looking at the blue line, the bottom 80% of Punk owners owned just over 10% of all Punks. Five years later, in March 2022, the Gini coefficient dropped to 0.597. This is still very unequal though, and considering the red line, you can see that the bottom 80% of Punk owners still only owned roughly 30% of all Punks. So, in scientific terms, the CryptoPunks market changed from being _very unequal_, to being _just slightly more equal but still quite unequal_.
 
-Figure 2 below shows a more gradual change in distribution. It has the same start and end points as Figure 1, but it includes 18 other points spaced approximately 4 months apart. The line colours form a gradient from blue to red. Blue lines occured further in the past, and red lines occured more recently. There was a noticeable jump that occured around April 2021. This is roughly in the period when the world was in the midst of a fervent NFT mania, just a month after the record breaking [auction](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million) of Beeple's The First 5000 Days at Christies. This booming NFT market is not unlike the ICO (Initial Coin Offering) [boom of 2017](https://www.forbes.com/sites/jeffkauflin/2018/10/29/where-did-the-money-go-inside-the-big-crypto-icos-of-2017/?sh=5e1e5fd7261b). Interestingly, the Gini coefficient goes down during this period. This also corresponds with a doubling in the number of addresses that hold Punks, from 1073 in January 2021 to 2105 in April 2021.
+Figure 2 below shows a more gradual change in distribution. It has the same start and end points as Figure 1, but it includes 18 other intermediate points spaced approximately 4 months apart. The line colours form a gradient from blue to red. Blue lines occured further in the past, and red lines occured more recently. There was a noticeable jump that occured around April 2021. This is roughly in the period when the world was in the midst of a fervent NFT mania, just a month after the record breaking [auction](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million) of Beeple's The First 5000 Days at Christies. This booming NFT market has some similarities to the ICO (Initial Coin Offering) [boom of 2017](https://www.forbes.com/sites/jeffkauflin/2018/10/29/where-did-the-money-go-inside-the-big-crypto-icos-of-2017/?sh=5e1e5fd7261b). Interestingly, the Gini coefficient goes down during this period. This also corresponds with a doubling in the number of addresses that hold Punks, from 1073 in January 2021 to 2105 in April 2021.
 
 <img src={figure2} alt="Figure 2" />
 
@@ -196,42 +79,56 @@ So far, I have only discussed the distribution of Punks tokens among addresses. 
 
 <img src={figure3} alt="Figure 3" />
 
-The most salient point worth mentioning is that the Ether earned due to Punks sales actually becomes _more_ unequal for a period, before following the trend observed in Figures 1 and 2 of decreasing inequality and smaller Gini coefficients.
-
+The most salient point worth mentioning is that the Ether value of Punks actually becomes _more_ unequal for a period, before following the trend observed in Figures 1 and 2 of decreasing inequality and smaller Gini coefficients.
 The final Gini coefficient for the distribution of the Ether value of Punks is 0.65, which is higher than the Gini coefficient for Punks themselves, which was 0.60 at the same point in time.
-
-## Economic Research on the Blockchain
 
 You may be wondering ... so what? And I agree. The results here are not earth-shattering. Really it's a study of only one single NFT project, on a single blockchain. In March 2022, the total ETH supply is approximately 120 million ETH, whereas the total value of all CryptoPunks combined is roughly 400,000 ETH. In other words, the value of the CryptoPunks market is only **0.33%** of the total ETH currently in circulation.
 
 So I am reluctant to draw any overarching conclusions from the data here. Perhaps the only thing we can say about the results above is that CryptoPunk ownership is relatively unequal, and the ETH value of those CryptoPunks is even more unequal. Unlike the Gini coefficient of a country, this is perhaps not such a bad thing. After all, it is an art project, and I am sure the creators and those who found it early will hold a disproportionate share of the Punks. Unlike the distribution of wealth in a country, or globally, I don't have a strong moral intuition that Punks _should_ be more equally distributed.
+This project was more an illustration of what is possible when conducting economic research on blockchains.
 
-This project was more an illustration of what is possible when conducting economic research on blockchains. In traditional economics, estimating the Gini coefficients for various countries and regions is fraught with incomplete data, missing data, and conflicting data. The problem is that there is no direct way to measure individuals' income and wealth. Rather, you have to derive that information from other sources such as surveys and tax data. Often various data sources conflict, or are incomplete. Because of the data limitations, one must assume (and hope) that an income survey of the population accurately represents the true distribution of income in the country.
-
-[This paper by Chen and others](https://hummedia.manchester.ac.uk/institutes/gdi/publications/workingpapers/bwpi/bwpi-wp-10910.pdf) illustrates these issues, considering the specific example of attempting to calcuate the Gini coefficient for China. They determine that there are over 20 different estimations of Chinese Gini coefficients. The year 1995 is illustrative. Several economists have tried to derive estimates of the Gini coefficient for that year, using a variety of data sources and methodologies, all with different results. The lowest estimate was 0.33 and the higest was 0.45!
-
-Compare that to the data gathering process undertaken to research the CryptoPunks. The exact distribution of Punks among addresses could be calculated exactly, not only for the present time, but for every possible period in time since the smart contract was deployed. To really emphasize this possibilty of 'time travel', I put together an interactive version of Figure 3 above. You can move the slider, and see how the Lorenz curve and Gini coefficient for the distribution of CryptoPunks changes over time. This is not an estimate - is is a perfectly accurate mapping of CryptoPunks to addresses over time.
+It is remarkable that we can retroactively inspect the state of a marketplace at any time in its history. To really emphasize this possibilty of 'time travel', I put together an interactive version of Figure 3 above. You can move the slider, and see how the Lorenz curve and Gini coefficient for the distribution of CryptoPunks changes over time.
 
 <InteractiveChart />
 
 Drag the slider above to view the distribution of the ETH value of Punks over time.
 
-Public blockchains like Ethereum and Bitcoin allow for complete information: every transaction amount, sender and receiver is publicly known. And one cannot fabricate transactions on the blockchain. They are very costly to falsify, and as the transaction gets buried deeper into the blockchain, the cost to falsify increase exponentially. In addition, it is trivial to quickly verify that a certain transaction genuinely belongs to the set of transactions included on the blockchain.
+## Economic Research on the Blockchain
+
+I believe that that blockchains will enable economic researchers to gather more, and more accurate data, on markets whose transactions are recorded on-chain.
+Every _single_ transaction that has ever occured on the Bitcoin network can exist on a 500GB hard drive.
+If you really wanted to, you could trace the flow of every [satoshi](<https://en.bitcoin.it/wiki/Satoshi_(unit)>) from the moment it was mined until the present day.
+This is incredibly powerful.
+
+It is an economist's dream. Often, when calculating things like [money velocity](https://en.wikipedia.org/wiki/Velocity_of_money), certain assumptions have to be made.
+You don't have access to a full list of transactions occuring in an economy, so you can only really approximate these meaures indirectly. Whereas on a blockchain, you can calculate it directly See [this example](http://charts.woobull.com/bitcoin-velocity/) where Willy Woo calculates the money velocity of the Bitcoin network.
+
+Take inequality as an example. In traditional economics, estimating the Gini coefficients for various countries and regions is fraught with incomplete data, missing data, and conflicting data. The problem is that there is no direct way to measure individuals' income and wealth. Rather, you have to derive that information from other sources such as surveys and tax data. Often various data sources conflict, or are incomplete. Because of the data limitations, one must assume (and hope) that an income survey of the population accurately represents the true distribution of income in the country.
+
+[This paper](https://hummedia.manchester.ac.uk/institutes/gdi/publications/workingpapers/bwpi/bwpi-wp-10910.pdf) by Chen and others illustrates these issues, considering the specific example of attempting to calcuate the Gini coefficient for China. They determine that there are over 20 different estimations of Chinese Gini coefficients. The year 1995 is illustrative. Several economists have tried to derive estimates of the Gini coefficient for that year, using a variety of data sources and methodologies, all with different results. The lowest estimate was 0.33 and the higest was 0.45!
+
+Compare that to the data gathering process undertaken to research the CryptoPunks. The exact distribution of Punks among addresses could be calculated exactly, not only for the present time, but for every possible period in time since the smart contract was deployed. This is not an estimate - is is a perfectly accurate mapping of CryptoPunks to addresses over time.
+
+Public blockchains like Ethereum and Bitcoin allow for complete information: every transaction amount, sender and receiver is publicly known. And one cannot fabricate transactions on the blockchain. They are immutable and prohibitively costly to falsify. As the transaction gets buried deeper into the blockchain, the cost to falsify increases exponentially. In addition, it is trivial to quickly verify that a certain transaction genuinely belongs to the set of transactions included on the blockchain.
 
 Provided sufficient computing power, it is entirely possible to calculate the exact distribution of Ethereum or Bitcoin across all addresses, at any moment in time since that cryptocurrency's inception. In fact, [this paper](https://link.springer.com/chapter/10.1007/978-981-13-0755-3_15) (unfortunately paywalled) by Gupta and Gupta does exactly that.
 
-This goes beyond just wealth distribution. One can also calculate other economic statistics like inflation and money velocity without having to make any estimations or assumptions. The [Clark Moody Bitcoin Dashboard](https://bitcoin.clarkmoody.com/dashboard/) includes measures of money velocity and inflation, under the 'Economics' section. Blockchains almost appear to be a panacea of economic data collection...
+This goes beyond just wealth distribution. One can also calculate other economic statistics like inflation and money velocity without having to make any estimations or assumptions. The [Clark Moody Bitcoin Dashboard](https://bitcoin.clarkmoody.com/dashboard/) includes measures of money velocity and inflation, under the 'Economics' section. Blockchains almost appear to be a panacea of economic data collection, except...
 
 ### 1 address ≠ 1 person
 
 Although the future of economics research on blockchains does look promising, there are some complications that must be mentioned. The most important one is the relationship between adresses and people. All the analysis above makes the assumption that each address uniquely identifies one person. This is almost certain not the case.
 
-Firstly, one person can have multiple addresses. Most Bitcoin wallet manufacturers today adhere to the [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) standard, which provides a standardized way for a single wallet to use multiple addresses. From a security and privacy perspective, using one address for all your transactions is an absolute nightmare. It is much better to use a new address for every single transaction, so that your entire transaction history cannot be recreated.
+Firstly, one person can have many addresses. Most Bitcoin wallet manufacturers today adhere to the [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) standard, which provides a standardized way for a single wallet to use multiple addresses. Using one address for all your transactions is a security and privacy nightmare. It is much better to use a new address for every single transaction, so that your entire transaction history cannot be recreated.
 
-The converse is also true: multiple people can share one address. This is probably less likely, but consider the case of a family who pool their funds to invest in cryptocurrencies collectively. Then, one address in our dataset will actually represent an entire family.
+The converse is also true: many people can share one address. This is probably less likely, but consider the case of a family who pool their funds to invest in cryptocurrencies collectively. Then, one address in our dataset will actually represent an entire family.
 
 So, depending on whether there are more addresses than people, or more people than addresses, the calculation of wealth distribution will either underestimate or overestimate the true extent of inequality. If each person uses multiple addresses, then the calculations done above will greatly underestimate the true extent of inequality.
 
-This is an ongoing problem. [Proof of Humanity](https://www.proofofhumanity.id/) is one attempt to address this problem, by using external mechanisms to establish a mapping of people to addresses. One could also conduct more fine-graned transaction analysis, and make some probabilistic estimates about the relationships between various addresses.
+This is an ongoing problem. [Proof of Humanity](https://www.proofofhumanity.id/) is one attempt to address this problem, by using external mechanisms to establish a verified mapping of people to addresses. One could also conduct more fine-grained transaction analysis, and make some probabilistic estimates about the relationships between various addresses.
 
-Whilst blockchains and cryptocurrencies definitely solve some existing issues in economic research, they also create new issues which must be addressed. To illustrate these concepts, a case study of the CryptoPunks market was considered.
+## Conclusion
+
+This post considered the distribution of CryptoPunk tokens over time. Whilst it considered only a single project in the Ethereum space, it was useful as an illustration of some broader ideas about data collection and research on blockchains.
+Whilst blockchains and cryptocurrencies definitely solve some existing issues in economic research, they also create new issues which must be addressed.
+Also, more work could be done to generalize the process above. It is possible to extend the work done here to create tools which could conduct analysis of any NFT token.
