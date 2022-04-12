@@ -37,11 +37,26 @@ const InteractiveChart = () => {
           graphData[time].points.length
         }, gini = ${graphData[time].gini.toFixed(3)})`,
         backgroundColor: graphData[time].colour,
+        borderColor: graphData[time].colour,
+        borderWidth: 4,
+      },
+      {
+        data: [
+          { x: 0, y: 0 },
+          { x: 1, y: 1 },
+        ],
+        label: "equality",
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 2,
+        borderDash: [15, 5],
       },
     ],
   }
 
-  Chart.defaults.font.size = 18
+  Chart.defaults.font.size = 20
+  Chart.defaults.color = "black"
+
   const options = {
     showLine: true,
     animation: false,
@@ -73,10 +88,6 @@ const InteractiveChart = () => {
       point: {
         radius: 0,
       },
-      line: {
-        borderWidth: 4,
-        borderColor: graphData[time].colour,
-      },
     },
     plugins: {
       title: {
@@ -84,6 +95,7 @@ const InteractiveChart = () => {
         text: "Figure 4: Interactive Distribution of ETH Value of Punks",
       },
       tooltip: { enabled: false },
+      legend: { labels: { padding: 20 } },
     },
   }
 
