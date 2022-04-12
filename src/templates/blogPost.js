@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 import Layout from "../components/layout"
 import { StyledArticle } from "../components/styles"
@@ -19,30 +21,28 @@ const BlogPost = ({ data }) => {
             {data.mdx.body}
           </MDXRenderer>
         </article>
-        <nav>
-          <ul>
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  <span role="img" aria-label="emoji">
-                    ⬅️
-                  </span>
-                  {" " + previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title + " "}
-                  <span role="img" aria-label="emoji">
-                    ➡️
-                  </span>
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
+        <Row>
+          <Col>
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev">
+                <span role="img" aria-label="emoji">
+                  ⬅️
+                </span>
+                {" " + previous.frontmatter.title}
+              </Link>
+            )}
+          </Col>
+          <Col>
+            {next && (
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title + " "}
+                <span role="img" aria-label="emoji">
+                  ➡️
+                </span>
+              </Link>
+            )}
+          </Col>
+        </Row>
       </StyledArticle>
     </Layout>
   )
