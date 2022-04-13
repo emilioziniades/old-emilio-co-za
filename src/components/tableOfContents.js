@@ -79,7 +79,6 @@ const TableOfContents = ({ headings }) => {
   const startItems = getStartItems(headings, itemsWithChildren, 2)
   return (
     <StyledTOC>
-      <h5> Contents </h5>
       <ul>
         {startItems.map(start => (
           <NestedList

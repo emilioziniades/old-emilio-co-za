@@ -12,8 +12,9 @@ const BlogPost = ({ data }) => {
   const { previous, next } = data
   const hasHeadings = data.mdx.headings.length !== 0
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
+    <Layout>
       <StyledArticle>
+        <h1>{data.mdx.frontmatter.title}</h1>
         <p>{data.mdx.frontmatter.date}</p>
         {hasHeadings && <TableOfContents headings={data.mdx.headings} />}
         <article>
@@ -25,7 +26,7 @@ const BlogPost = ({ data }) => {
           {previous && (
             <Col sm="auto">
               <span role="img" aria-label="emoji">
-                ⬅️
+                <h2>⬅️</h2>
               </span>
             </Col>
           )}
@@ -46,7 +47,7 @@ const BlogPost = ({ data }) => {
           {next && (
             <Col sm="auto">
               <span role="img" aria-label="emoji">
-                ➡️
+                <h2>➡️</h2>
               </span>
             </Col>
           )}
@@ -63,7 +64,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
-        date(formatString: "MMMM D, YYYY")
+        date(formatString: "D MMMM YYYY")
       }
       body
       headings {
