@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -9,6 +10,7 @@ import { StyledArticle } from "../components/styles"
 import TableOfContents from "../components/tableOfContents"
 
 const BlogPost = ({ data }) => {
+  const image = getImage(data.mdx.frontmatter.hero_image)
   const { previous, next } = data
   const hasHeadings = data.mdx.headings.length !== 0
   return (
@@ -16,8 +18,19 @@ const BlogPost = ({ data }) => {
       <StyledArticle>
         <h1>{data.mdx.frontmatter.title}</h1>
         <p>{data.mdx.frontmatter.date}</p>
+        <GatsbyImage
+          className="my-3"
+          image={image}
+          alt={data.mdx.frontmatter.hero_image_alt}
+        />
+        <p>
+          Photo Credit:{" "}
+          <a href={data.mdx.frontmatter.hero_image_credit_link}>
+            {data.mdx.frontmatter.hero_image_credit_text}
+          </a>
+        </p>
         {hasHeadings && <TableOfContents headings={data.mdx.headings} />}
-        <article>
+        <article className="mt-2">
           <MDXRenderer headings={data.mdx.headings}>
             {data.mdx.body}
           </MDXRenderer>
@@ -65,6 +78,21 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "D MMMM YYYY")
+        hero_image_alt
+        hero_image_credit_link
+        hero_image_credit_text
+        hero_image {
+          childImageSharp {
+            gatsbyImageData(
+              layout: CONSTRAINED
+              transformOptions: { fit: CONTAIN }
+              height: 350
+              width: 700
+              backgroundColor: "white"
+              placeholder: BLURRED
+            )
+          }
+        }
       }
       body
       headings {
