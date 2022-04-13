@@ -21,27 +21,35 @@ const BlogPost = ({ data }) => {
             {data.mdx.body}
           </MDXRenderer>
         </article>
-        <Row>
+        <Row className="m-2">
+          {previous && (
+            <Col sm="auto">
+              <span role="img" aria-label="emoji">
+                ⬅️
+              </span>
+            </Col>
+          )}
           <Col>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                <span role="img" aria-label="emoji">
-                  ⬅️
-                </span>
                 {" " + previous.frontmatter.title}
               </Link>
             )}
           </Col>
-          <Col>
+          <Col style={{ textAlign: "right" }}>
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title + " "}
-                <span role="img" aria-label="emoji">
-                  ➡️
-                </span>
               </Link>
             )}
           </Col>
+          {next && (
+            <Col sm="auto">
+              <span role="img" aria-label="emoji">
+                ➡️
+              </span>
+            </Col>
+          )}
         </Row>
       </StyledArticle>
     </Layout>
