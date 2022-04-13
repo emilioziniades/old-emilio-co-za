@@ -23,16 +23,6 @@ const Header = () => {
           <Nav className="align-items-end">
             <Nav.Item className="menu-item">
               <Link
-                to="/teach"
-                aria-label="teach-page"
-                activeClassName="active-teach"
-                partiallyActive
-              >
-                Teach
-              </Link>
-            </Nav.Item>
-            <Nav.Item className="menu-item">
-              <Link
                 to="/write"
                 aria-label="write-page"
                 activeClassName="active-write"
@@ -49,6 +39,16 @@ const Header = () => {
                 partiallyActive
               >
                 Code
+              </Link>
+            </Nav.Item>
+            <Nav.Item className="menu-item">
+              <Link
+                to="/teach"
+                aria-label="teach-page"
+                activeClassName="active-teach"
+                partiallyActive
+              >
+                Teach
               </Link>
             </Nav.Item>
             <Nav.Item className="menu-item">

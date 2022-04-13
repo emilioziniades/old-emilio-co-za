@@ -52,23 +52,23 @@ const HeroMenu = () => {
       <h2>
         <div className="menu-header">I</div>
         <HoverEmoji
-          text="teach,"
-          emoji="📚"
-          to="/teach"
-          className="highlighted-teach"
-        />
-        <HoverEmoji
-          text="write"
+          text="write,"
           emoji="📝"
           to="/write"
           className="highlighted-write"
         />
-        <div className="menu-header">and</div>
         <HoverEmoji
           text="code"
           emoji="💻"
           to="/code"
           className="highlighted-code"
+        />
+        <div className="menu-header">and</div>
+        <HoverEmoji
+          text="teach"
+          emoji="📚"
+          to="/teach"
+          className="highlighted-teach"
         />
         <br />
       </h2>
