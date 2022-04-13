@@ -37,11 +37,11 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
     }
     h1 {
-        font-weight: 700;
+        font-weight: 600;
         font-size: 2.625rem;
         line-height: 3rem;
         color: black;
-        margin: 2rem 0rem;
+        margin: 0.75rem 0rem;
     }
     h2 {
         font-weight: 700;
