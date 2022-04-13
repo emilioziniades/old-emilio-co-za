@@ -120,7 +120,7 @@ export const StyledHeader = styled.header`
   }
 `
 export const StyledLogo = styled(Link)`
-  font-size: 3rem !important;
+  font-size: 2.75rem !important;
   font-weight: 900;
   color: ${colours.text} !important;
   margin: 1rem;
