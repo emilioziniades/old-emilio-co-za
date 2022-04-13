@@ -61,6 +61,13 @@ export const GlobalStyle = createGlobalStyle`
           color: ${colours.linkHover};
         }
     }
+    code {
+      background-color: #e5e5e3;
+      color: ${colours.text};
+      font-size: 85%;
+      border-radius: 6px;
+      padding: .2em .3em;
+    }
 `
 
 export default GlobalStyle
