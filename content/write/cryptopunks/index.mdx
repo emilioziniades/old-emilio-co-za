@@ -7,6 +7,7 @@ page: "post"
 ---
 
 import { StaticImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
 
 import figure1 from "./figure_1.png"
 import figure2 from "./figure_2.png"
@@ -22,7 +23,7 @@ import TableOfContents from "../../../src/components/tableOfContents.js"
 This post will first briefly introduce CryptoPunks and NFTs. It then measures the distribution of CryptoPunks over time, deriving [Lorenz curves](https://en.wikipedia.org/wiki/Lorenz_curve) and [Gini coefficients](https://en.wikipedia.org/wiki/Gini_coefficient) as a measure of inequality of Punks (and the Ether value of those Punks).
 Finally, it considers, in general, the possibility of conducting economic research on blockchains.
 
-I have written a [technical explainer](../cryptopunks-technical) as a companion to this piece, which goes into more depth regarding certain topics.
+I have written a <Link to="../cryptopunks-technical">technical explainer</Link> as a companion to this piece, which goes into more depth regarding certain topics.
 
 ## CryptoPunks
 
@@ -30,7 +31,7 @@ I have written a [technical explainer](../cryptopunks-technical) as a companion 
 
 _Image Source: [CryptoPunks website](https://www.larvalabs.com/public/images/product/cryptopunks/punk-variety-2x.png)_
 
-CryptoPunks is an Ethereum Non-Fungible Token (NFT) project by Larva Labs, which consists of 10,000 pixel art characters like the ones above. They were programatically generated to have a combination of different traits, such as hats, hair colour and earrings. Punks are indexed from 0 to 9999. One can see all the Punks in [this image](https://github.com/larvalabs/cryptoPunks/blob/master/Punks.png).
+CryptoPunks is an Ethereum Non-Fungible Token (NFT) project by Larva Labs, which consists of 10,000 pixel art characters like the ones above. They were programatically generated to have a combination of different traits, such as hats, hair colour and earrings. Punks are indexed from 0 to 9999. One can see all the Punks in [this image](https://github.com/larvalabs/cryptoPunks/blob/master/punks.png).
 Each individual Punk represents a single token, and each token is unique. The ownership of these Punks is mediated by the [CryptoPunks smart contract](https://github.com/larvalabs/cryptoPunks/blob/master/contracts/CryptoPunksMarket.sol) which was [deployed](https://etherscan.io/address/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB) in June 2017.
 Actually this was the second version of the smart contract. The first had a fatal [bug](https://twitter.com/0xfoobar/status/1374604091263905794?s=21) - but we won't be getting into any of that today.
 
@@ -45,9 +46,9 @@ This meant that interacting with the CryptoPunks smart contract programatically 
 
 ## Inequality
 
-The remainder of this paper tackles the research question: what is the distribution of CryptoPunks? Are they equally distributed among many addresses, or do a few addresses own most of the Punks? And how does the distribution of Punks change over time? Does it disperse over time, or does it concentrate? Also, not all Punks are equally valuable. Some Punks are sold for [millions of dollars](https://www.larvalabs.com/cryptopunks/details/5822), whilst other Punks sell for [less](https://www.larvalabs.com/cryptoPunks/details/2427). So I then consider how the ETH value of Punks is distributed across all Punk owners.
+The remainder of this paper tackles the research question: what is the distribution of CryptoPunks? Are they equally distributed among many addresses, or do a few addresses own most of the Punks? And how does the distribution of Punks change over time? Does it disperse over time, or does it concentrate? Also, not all Punks are equally valuable. Some Punks are sold for [millions of dollars](https://www.larvalabs.com/cryptopunks/details/5822), whilst other Punks sell for less. So I then consider how the ETH value of Punks is distributed across all Punk owners.
 
-I make use of two economic concepts to conduct this analysis: Lorenz curves and Gini coefficients. For more information, see the [technical explainer](../cryptopunks-technical).
+I make use of two economic concepts to conduct this analysis: Lorenz curves and Gini coefficients. For more information, see the <Link to="../cryptopunks-technical">technical explainer</Link>.
 
 Lorenz curves represent inequality graphically. They graph the cumulative percent of people versus the cumulative percent of resources. If resources were distributed equally, the Lorenz Curve would represent a diagonal line going through the origin. The further away the curve is from that diagonal line, the more unequal the market.
 
@@ -55,7 +56,7 @@ Gini coefficients quantify inequality as a single number between 0 and 1. Coeffi
 
 ### The distribution of CryptoPunks over time
 
-My tool of choice for gathering, processing and graphing the data was Python. All the code for this project can be found on [Github](https://github.com/emilioziniades/Punks-analysis).
+My tool of choice for gathering, processing and graphing the data was Python. All the code for this project can be found on [Github](https://github.com/emilioziniades/punks-analysis).
 
 #### Fetching and cleaning the data
 
@@ -71,11 +72,11 @@ Figure 1 shows the distribution of Punks, as represented by Lorenz curves, at tw
 
 The main conclusion to be drawn here is that the distribution of Punks actually became more equal over time. Initially, after all Punks had been claimed, the Gini coefficient was 0.83. Looking at the blue line, the bottom 80% of Punk owners owned just over 10% of all Punks. Five years later, in March 2022, the Gini coefficient dropped to 0.597. This is still very unequal though, and considering the red line, you can see that the bottom 80% of Punk owners still only owned roughly 30% of all Punks. So, in scientific terms, the CryptoPunks market changed from being _very unequal_, to being _just slightly more equal but still quite unequal_.
 
-Figure 2 below shows a more gradual change in distribution. It has the same start and end points as Figure 1, but it includes 18 other intermediate points spaced approximately 4 months apart. The line colours form a gradient from blue to red. Blue lines occured further in the past, and red lines occured more recently. There was a noticeable jump that occured around April 2021. This is roughly in the period when the world was in the midst of a fervent NFT mania, just a month after the record breaking [auction](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million) of Beeple's The First 5000 Days at Christies. This booming NFT market has some similarities to the ICO (Initial Coin Offering) [boom of 2017](https://www.forbes.com/sites/jeffkauflin/2018/10/29/where-did-the-money-go-inside-the-big-crypto-icos-of-2017/?sh=5e1e5fd7261b). Interestingly, the Gini coefficient goes down during this period. This also corresponds with a doubling in the number of addresses that hold Punks, from 1073 in January 2021 to 2105 in April 2021.
+Figure 2 below shows a more gradual change in distribution. It has the same start and end points as Figure 1, but it includes 18 other intermediate points spaced approximately 4 months apart. The line colours form a gradient from blue to orange. Blue lines occured further in the past, and orange lines occured more recently. There was a noticeable jump that occured around April 2021. This is roughly in the period when the world was in the midst of a fervent NFT mania, just a month after the record breaking [auction](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million) of Beeple's The First 5000 Days at Christies. This booming NFT market has some similarities to the ICO (Initial Coin Offering) [boom of 2017](https://www.forbes.com/sites/jeffkauflin/2018/10/29/where-did-the-money-go-inside-the-big-crypto-icos-of-2017/?sh=5e1e5fd7261b). Interestingly, the Gini coefficient goes down during this period. This also corresponds with a doubling in the number of addresses that hold Punks, from 1073 in January 2021 to 2105 in April 2021.
 
 <img src={figure2} alt="Figure 2" />
 
-So far, I have only discussed the distribution of Punks tokens among addresses. Really, one shouldn't weight each Punk equally, since there is a large degree of variation in the prices that they are sold for. So, instead of considering the distribution of Punks themselves, one could consider the distribution of the Ether value of those Punks. I consider the Ether value of a Punk to be its most recent sale price. This accounts for the variations in prices. When one does this, the picture changes slightly, but not too significantly, as can be seen in Figure 3 below.
+So far, I have only discussed the distribution of Punks tokens among addresses. Really, one shouldn't weight each Punk equally, since there is a large degree of variation in the prices that they are sold for. So, instead of considering the distribution of Punks themselves, one could consider the distribution of the Ether value of those Punks. I use the most recent sale price to represent the Ether value of a Punk. This accounts for the variations in prices. When one does this, the picture changes slightly, but not too significantly, as can be seen in Figure 3 below.
 
 <img src={figure3} alt="Figure 3" />
 
@@ -91,7 +92,7 @@ It is remarkable that we can retroactively inspect the state of a marketplace at
 
 <InteractiveChart />
 
-Drag the slider above to view the distribution of the ETH value of Punks over time.
+_Drag the slider above to view the distribution of the ETH value of Punks over time._
 
 ## Economic Research on the Blockchain
 
@@ -101,7 +102,7 @@ If you really wanted to, you could trace the flow of every [satoshi](<https://en
 This is incredibly powerful.
 
 It is an economist's dream. Often, when calculating things like [money velocity](https://en.wikipedia.org/wiki/Velocity_of_money), certain assumptions have to be made.
-You don't have access to a full list of transactions occuring in an economy, so you can only really approximate these meaures indirectly. Whereas on a blockchain, you can calculate it directly See [this example](http://charts.woobull.com/bitcoin-velocity/) where Willy Woo calculates the money velocity of the Bitcoin network.
+You don't have access to a full list of transactions occuring in an economy, so you can only really approximate these meaures indirectly. Whereas on a blockchain, you can calculate it directly. See [this example](http://charts.woobull.com/bitcoin-velocity/) where Willy Woo calculates the money velocity of the Bitcoin network.
 
 Take inequality as an example. In traditional economics, estimating the Gini coefficients for various countries and regions is fraught with incomplete data, missing data, and conflicting data. The problem is that there is no direct way to measure individuals' income and wealth. Rather, you have to derive that information from other sources such as surveys and tax data. Often various data sources conflict, or are incomplete. Because of the data limitations, one must assume (and hope) that an income survey of the population accurately represents the true distribution of income in the country.
 
