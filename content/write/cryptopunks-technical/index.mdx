@@ -11,7 +11,7 @@ import example2 from "./example_2.png"
 import example3 from "./example_3.png"
 import { Link } from "gatsby"
 
-This technical write-up discusses some of the more detailed aspects of the research project discussed in <Link to="../cryptopunks"> this paper.</Link>
+This technical write-up elaborates on some of the more detailed aspects of the research project discussed in <Link to="../cryptopunks"> this paper.</Link>
 
 ## CryptoPunks
 
@@ -23,7 +23,7 @@ Instead of storing the raw images on-chain, most NFT projects today store the im
 
 I have some concerns about this. The internet, and the links that comprise it, are not a stable landscape, but rather a fluid and dynamic one. Always shifting, changing, and even [rotting](https://www.theatlantic.com/technology/archive/2021/06/the-internet-is-a-collective-hallucination/619320/). It is possible that one day the URLs referred to on-chain will be nothing more than broken links.
 
-In any case, the CryptoPunks creators also opted to avoid storing the images themselves on-chain. Instead, the Smart Contract refers to the sha256 hash of the image. So given this hash, which is stored immutably on-chain, one can very that an image represents the authentic CryptoPunks collection by hashing the image and comparing that hash to the one in the smart contract. If the hashes are the same, then you can find the verified and geniune picture of your Punk by counting from left to right, top to bottom, starting at 0. This works as long as one can access the image _somewhere_ online.
+In any case, the CryptoPunks creators also opted to avoid storing the images themselves on-chain. Instead, the smart contract contains the [sha256 hash](https://github.com/larvalabs/cryptopunks/blob/11532167fa705ced569fc3206df0484f9027e1ee/contracts/CryptoPunksMarket.sol#L5) of the image. So given this hash, which is stored immutably on-chain, one can very that an image represents the authentic CryptoPunks collection by hashing the image and comparing that hash to the one in the smart contract. If the hashes are the same, then you can find the verified and geniune picture of your Punk by counting from left to right, top to bottom, starting at 0. This works as long as one can access the image _somewhere_ online.
 
 ### Events
 
@@ -101,8 +101,6 @@ We call this 'degree of inequality' the Gini coefficient. There is a more rigoro
 
 Consider the two extreme cases.
 
-In the case of perfect equality, there is no red region, so the the Gini coefficient is just `0 / (0 + blue) = 0`. On the other hand, in the situation of perfect inequality, where one person owns absolutely everything and everyone else owns nothing, there is no blue region, so the Gini coefficient is `red / (red + 0) = 1`. Realistically, the Gini coefficient will tend to 1, but will never actually reach it in practice. So the Gini coefficient ranges from 0 to 1. Figures near 0 describe roughly equal distributions, whereas figures near 1 describe unequal distributions.
-
-If you calculate the Gini coefficient for Example 2 above, you get 0.40, (or 40%).
+In the case of perfect equality, there is no red region, so the the Gini coefficient is just `0 / (0 + blue) = 0`. On the other hand, in the situation of perfect inequality, where one person owns absolutely everything and everyone else owns nothing, there is no blue region, so the Gini coefficient is `red / (red + 0) = 1`. Realistically, the Gini coefficient will tend to 1, but will never actually reach it in practice. So the Gini coefficient ranges from 0 to 1. Figures near 0 describe roughly equal distributions, whereas figures near 1 describe unequal distributions. If you calculate the Gini coefficient for Example 2 above, you get 0.40, (or 40%).
 
 For context, the [World Bank](https://data.worldbank.org/indicator/SI.POV.GINI) calculated that South Africa, one of the most economically unequal countries in the world, had a Gini coefficient of 0.63 (or 63%) in 2014, whereas the Gini coefficient of Iceland was 0.26 (or 26%) in 2017, making it one of the least unequal countries in the world.

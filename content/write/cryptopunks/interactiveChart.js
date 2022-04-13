@@ -95,7 +95,7 @@ const InteractiveChart = () => {
         text: "Figure 4: Interactive Distribution of ETH Value of Punks",
       },
       tooltip: { enabled: false },
-      legend: { labels: { padding: 20 } },
+      legend: { labels: { padding: 20 }, onClick: null },
     },
   }
 
