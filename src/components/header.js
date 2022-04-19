@@ -43,16 +43,6 @@ const Header = () => {
             </Nav.Item>
             <Nav.Item className="menu-item">
               <Link
-                to="/teach"
-                aria-label="teach-page"
-                activeClassName="active-teach"
-                partiallyActive
-              >
-                Teach
-              </Link>
-            </Nav.Item>
-            <Nav.Item className="menu-item">
-              <Link
                 to="/about"
                 aria-label="about-page"
                 className="secondary-item"
