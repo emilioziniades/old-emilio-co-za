@@ -15,20 +15,11 @@ export default function WritePage({ data }) {
       {posts.map(post => (
         <StyledArticle key={post.id}>
           <Row>
-            <Col sm="auto">
-              <GatsbyImage
-                image={getImage(post.frontmatter.hero_image)}
-                alt={post.frontmatter.hero_image_alt}
-                className="m-2 mx-auto"
-              />
-            </Col>
-            <Col>
               <Card.Title as="h2">
                 <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
               </Card.Title>
               <small>{post.frontmatter.date}</small>
               <p> {post.frontmatter.description} </p>
-            </Col>
           </Row>
         </StyledArticle>
       ))}

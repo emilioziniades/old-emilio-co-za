@@ -5,7 +5,7 @@ module.exports = {
     author: `Emilio Ziniades`,
     authorEmail: `emilioziniades@gmail.com`,
     blurb:
-      "Interdisciplinary research into Political Economy, Cryptocurrencies and Technology. Based in Cape Town, South Africa.",
+      "Interdisciplinary research into political economy, cryptocurrencies and technology. Based in Cape Town, South Africa.",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

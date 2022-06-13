@@ -10,7 +10,6 @@ import { StyledArticle } from "../components/styles"
 import TableOfContents from "../components/tableOfContents"
 
 const BlogPost = ({ data }) => {
-  const image = getImage(data.mdx.frontmatter.hero_image)
   const { previous, next } = data
   const hasHeadings = data.mdx.headings.length !== 0
   return (
@@ -18,17 +17,6 @@ const BlogPost = ({ data }) => {
       <StyledArticle>
         <h1>{data.mdx.frontmatter.title}</h1>
         <p>{data.mdx.frontmatter.date}</p>
-        <GatsbyImage
-          className="my-3"
-          image={image}
-          alt={data.mdx.frontmatter.hero_image_alt}
-        />
-        <p>
-          Photo Credit:{" "}
-          <a href={data.mdx.frontmatter.hero_image_credit_link}>
-            {data.mdx.frontmatter.hero_image_credit_text}
-          </a>
-        </p>
         {hasHeadings && <TableOfContents headings={data.mdx.headings} />}
         <article className="mt-2">
           <MDXRenderer headings={data.mdx.headings}>
