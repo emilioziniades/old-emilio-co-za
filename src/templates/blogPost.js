@@ -16,42 +16,49 @@ const BlogPost = ({ data }) => {
     <Layout>
       <StyledArticle>
         <h1>{data.mdx.frontmatter.title}</h1>
-        <p>{data.mdx.frontmatter.date}</p>
-        {hasHeadings && <TableOfContents headings={data.mdx.headings} />}
+        <b>{data.mdx.frontmatter.date}</b>
+        <i className="my-3">{data.mdx.frontmatter.description}</i>
+        {hasHeadings && (
+          <TableOfContents className="my-3 mx-1" headings={data.mdx.headings} />
+        )}
         <article className="mt-2">
           <MDXRenderer headings={data.mdx.headings}>
             {data.mdx.body}
           </MDXRenderer>
         </article>
         <Row className="m-2">
-          {previous && (
-            <Col sm="auto">
-              <span role="img" aria-label="emoji">
-                <h2>⬅️</h2>
-              </span>
-            </Col>
-          )}
+          <Col sm="auto">
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev">
+                <span role="img" aria-label="emoji">
+                  <h2>⬅️</h2>
+                </span>
+              </Link>
+            )}
+          </Col>
           <Col>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                {" " + previous.frontmatter.title}
+                <h5>{" " + previous.frontmatter.title}</h5>
               </Link>
             )}
           </Col>
           <Col style={{ textAlign: "right" }}>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title + " "}
+                <h5>{next.frontmatter.title + " "}</h5>
               </Link>
             )}
           </Col>
-          {next && (
-            <Col sm="auto">
-              <span role="img" aria-label="emoji">
-                <h2>➡️</h2>
-              </span>
-            </Col>
-          )}
+          <Col sm="auto" style={{ textAlign: "right" }}>
+            {next && (
+              <Link to={next.fields.slug} rel="next">
+                <span role="img" aria-label="emoji">
+                  <h2>➡️</h2>
+                </span>
+              </Link>
+            )}
+          </Col>
         </Row>
       </StyledArticle>
     </Layout>
@@ -65,6 +72,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
+        description
         date(formatString: "D MMMM YYYY")
         hero_image_alt
         hero_image_credit_link
