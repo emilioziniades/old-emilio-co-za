@@ -26,11 +26,21 @@ const ContactForm = () => {
 
         <Form.Group className="mb-3">
           <Form.Label> Your name: </Form.Label>
-          <Form.Control type="text" name="name " placeholder="Enter name" />
+          <Form.Control
+            type="text"
+            name="name "
+            placeholder="Enter name"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label> Your email: </Form.Label>
-          <Form.Control type="email" name="email" placeholder="Enter email" />
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label> Message: </Form.Label>
@@ -38,6 +48,7 @@ const ContactForm = () => {
             as="textarea"
             name="message"
             placeholder="Enter message"
+            required
           />
         </Form.Group>
         <Button type="submit" className="mb-3">
