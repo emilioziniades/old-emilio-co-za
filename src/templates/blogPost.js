@@ -74,21 +74,6 @@ export const query = graphql`
         title
         description
         date(formatString: "D MMMM YYYY")
-        hero_image_alt
-        hero_image_credit_link
-        hero_image_credit_text
-        hero_image {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              transformOptions: { fit: CONTAIN }
-              height: 350
-              width: 700
-              backgroundColor: "white"
-              placeholder: BLURRED
-            )
-          }
-        }
       }
       body
       headings {

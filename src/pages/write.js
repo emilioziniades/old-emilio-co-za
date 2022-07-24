@@ -15,11 +15,11 @@ export default function WritePage({ data }) {
       {posts.map(post => (
         <StyledArticle key={post.id}>
           <Row>
-              <Card.Title as="h2">
-                <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-              </Card.Title>
-              <small>{post.frontmatter.date}</small>
-              <p> {post.frontmatter.description} </p>
+            <Card.Title as="h2">
+              <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
+            </Card.Title>
+            <small>{post.frontmatter.date}</small>
+            <p> {post.frontmatter.description} </p>
           </Row>
         </StyledArticle>
       ))}
@@ -41,18 +41,6 @@ export const query = graphql`
           page
           title
           type
-          hero_image {
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                height: 125
-                width: 125
-                aspectRatio: 1
-                backgroundColor: "white"
-                placeholder: BLURRED
-              )
-            }
-          }
         }
         fields {
           slug
